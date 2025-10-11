@@ -1,0 +1,93 @@
+.navbar {
+  background-color: #4CAF50;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-emoji {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  font-family: 'Arial', sans-serif; 
+}
+
+.brand-name {
+  font-size: 1.2rem;   
+  font-weight: 900;     
+  color: orange;
+}
+
+.brand-subtitle {
+  font-size: 0.8rem;   
+  font-weight: normal;  
+  color: #000000; 
+  margin-top: 2px;
+}
+
+.buscador {
+  display: flex;
+}
+
+.buscador input {
+  padding: 5px 10px;
+  border-radius: 20px 0 0 20px;
+  border: none;
+  outline: none;
+}
+
+.buscador button {
+  padding: 5px 15px;
+  border-radius: 0 20px 20px 0;
+  border: none;
+  background-color: #fff;
+  color: #4CAF50;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-links a,
+.nav-links .link-btn {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.nav-links a:hover,
+.nav-links .link-btn:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
