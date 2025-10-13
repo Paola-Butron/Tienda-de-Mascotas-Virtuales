@@ -277,7 +277,6 @@ const sample = [
     "activo": true,
     "ventasMes": 95
   },
-
   {
     "id": 19,
     "nombre": "Tender",
@@ -697,7 +696,6 @@ const sample = [
     "imagenUrl": "/images/HE01.png",
     "precio": 33.20,
     "categoria": "Herity",
-    "paisInspiracion": "Grecia",
     "activo": true,
     "ventasMes": 115
   },
@@ -713,7 +711,6 @@ const sample = [
     "imagenUrl": "/images/HE02.png",
     "precio": 31.70,
     "categoria": "Herity",
-    "paisInspiracion": "Egipto",
     "activo": true,
     "ventasMes": 109
   },
@@ -729,7 +726,6 @@ const sample = [
     "imagenUrl": "/images/HE03.png",
     "precio": 30.90,
     "categoria": "Herity",
-    "paisInspiracion": "Italia",
     "activo": true,
     "ventasMes": 103
   },
@@ -745,7 +741,6 @@ const sample = [
     "imagenUrl": "/images/HE04.png",
     "precio": 29.80,
     "categoria": "Herity",
-    "paisInspiracion": "México",
     "activo": true,
     "ventasMes": 117
   },
@@ -761,7 +756,6 @@ const sample = [
     "imagenUrl": "/images/HE05.png",
     "precio": 32.10,
     "categoria": "Herity",
-    "paisInspiracion": "Japón",
     "activo": true,
     "ventasMes": 100
   },
@@ -777,7 +771,6 @@ const sample = [
     "imagenUrl": "/images/HE06.png",
     "precio": 34.00,
     "categoria": "Herity",
-    "paisInspiracion": "Brasil",
     "activo": true,
     "ventasMes": 122
   },
@@ -793,7 +786,6 @@ const sample = [
     "imagenUrl": "/images/HE07.png",
     "precio": 30.60,
     "categoria": "Herity",
-    "paisInspiracion": "Perú",
     "activo": true,
     "ventasMes": 112
   },
@@ -809,7 +801,6 @@ const sample = [
     "imagenUrl": "/images/HE08.png",
     "precio": 29.90,
     "categoria": "Herity",
-    "paisInspiracion": "India",
     "activo": true,
     "ventasMes": 108
   },
@@ -825,9 +816,9 @@ const sample = [
     "imagenUrl": "/images/HE09.png",
     "precio": 31.50,
     "categoria": "Herity",
-    "paisInspiracion": "Francia",
     "activo": true,
     "ventasMes": 106
   }
+
 ];
 export default sample;

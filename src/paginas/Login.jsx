@@ -1,19 +1,47 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; 
 import "./login.css";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (form.email === "" || form.password === "") {
-      alert("Por favor, completa todos los campos.");
+
+    if (!form.email || !form.password) {
+      setError("Por favor, completa todos los campos.");
       return;
     }
-    alert(`Bienvenido, ${form.email}! 😺`);
-    navigate("/");
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      setError("Por favor, ingresa un correo válido.");
+      return;
+    }
+
+    if (form.password.length < 6) {
+      setError("La contraseña debe tener al menos 6 caracteres.");
+      return;
+    }
+
+    const data = JSON.parse(localStorage.getItem("tienda_mascotas_full_users_v1")) || {};
+    const usuarios = data.usuarios || [];
+    const usuarioEncontrado = usuarios.find(
+      (u) => u.email === form.email && u.password === form.password
+    );
+
+    if (usuarioEncontrado) {
+      localStorage.setItem(
+        "tienda_mascotas_full_users_v1",
+        JSON.stringify({ ...data, usuarioLogueado: usuarioEncontrado })
+      );
+      alert(`Bienvenido, ${usuarioEncontrado.nombre}! 😺`);
+      navigate("/");
+    } else {
+      setError("Correo o contraseña incorrectos.");
+    }
   };
 
   return (
@@ -35,14 +63,17 @@ export default function Login() {
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
           />
+
+          {error && <p className="error-text">{error}</p>}
+
           <button type="submit" className="login-btn">
             Ingresar
           </button>
         </form>
 
         <div className="login-links">
-          <a href="/register">Crear cuenta</a>
-          <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+          <Link to="/register">Crear cuenta</Link> 
+          <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link> 
         </div>
       </div>
     </section>
