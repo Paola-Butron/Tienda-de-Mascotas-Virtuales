@@ -24,7 +24,20 @@ export default function DetalleProducto() {
           <li><strong>Poder Especial:</strong> {descripcion.poderEspecial}</li>
           <li><strong>Beneficio:</strong> {descripcion.beneficio}</li>
         </ul>
-        <p className="precio">S/ {precio.toFixed(2)}</p>
+        {producto.tieneDescuento ? (
+          <div>
+            <p style={{ textDecoration: 'line-through', color: '#888' }}>
+              S/ {producto.precio.toFixed(2)}
+            </p>
+            <p style={{ fontSize: '1.5em', fontWeight: 'bold', color: '#333' }}>
+              S/ {producto.precioDescuento.toFixed(2)}
+            </p>
+          </div>
+        ) : (
+          <p style={{ fontSize: '1.5em', fontWeight: 'bold' }}>
+            S/ {producto.precio.toFixed(2)}
+          </p>
+        )}
         <button className="btn-agregar" onClick={() => agregarAlCarrito(producto, 1)}>Agregar al carrito</button>
       </div>
     </section>

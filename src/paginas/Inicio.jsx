@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import { useProductos } from '../context/ProductosContext'
 import './Inicio.css'
@@ -6,9 +6,16 @@ import './Inicio.css'
 export default function Inicio() {
   const [slide, setSlide] = useState(0)
   const { productos, categorias } = useProductos()
-  const top12 = [...productos].sort((a,b)=> (b.ventasMes||0)-(a.ventasMes||0)).filter(p=>p.activo).slice(0,12)
-  const nuevos6 = [...productos].slice(0,6).filter(p=>p.activo)
+  const navigate = useNavigate()
 
+  const top12 = [...productos]
+    .sort((a,b)=> (b.ventasMes||0)-(a.ventasMes||0))
+    .filter(p=>p.activo)
+    .slice(0,12)
+
+  const nuevos6 = [...productos]
+    .slice(0,6)
+    .filter(p=>p.activo)
 
   const imagenesCategorias = [
     '/images/9.png',   
@@ -17,12 +24,11 @@ export default function Inicio() {
     '/images/2.png',   
     '/images/7.png',
     '/images/5.png'
-
   ]
 
   const ofertas = [
     {
-      titulo: "Desde 30% de descuento en la categoría Brainy",
+      titulo: "Hasta 30% de descuento en la categoría Brainy",
       descripcion: "Celebra el día de la salud mental junto a las más inteligentes de nuestras mascotas!",
       imagen: "/images/oferta1.png"
     },
@@ -45,29 +51,33 @@ export default function Inicio() {
     return () => clearInterval(timer)
   }, [])
 
+  const irACategoria = (categoria) => {
+    navigate(`/productos?categoria=${encodeURIComponent(categoria)}`)
+  }
+
   return (
     <section className="inicio">
       <div className="inicio-principal card">
         <div className="inicio-texto">
-          <h1>Adopta a una mascota virtual 🐶</h1>
-          <p>Productos, accesorios y juegos para tus mascotas virtuales</p>
-          <Link to="/productos"><button>Ver catálogo</button></Link>
+          <h1>Encuentra a tu nuevo compañero 🐶</h1>
+          <p>Adopta y diviértete con tu nuevo amigo</p>
+          <Link to="/productos"><button>Empieza ahora ⭢</button></Link>
         </div>
         <img 
-          src="https://androidguias.com/wp-content/uploads/2025/08/My-Tamagotchi-Forever.png"  
+          src="/images/main.png"  
           alt="mascotas" 
           className="inicio-imagen" 
         />
       </div>
 
-       {/* Carrusel de ofertas */}
+      {/* Carrusel de ofertas */}
       <div className="oferta-carrusel">
         <div className="oferta-texto">
           <h3>{ofertas[slide].titulo}</h3>
           <p>{ofertas[slide].descripcion}</p>
         </div>
 
-        <div className="oferta-separador"></div> {/* separador fijo */}
+        <div className="oferta-separador"></div>
 
         <img src={ofertas[slide].imagen} alt="Oferta" className="oferta-imagen" />
 
@@ -85,56 +95,56 @@ export default function Inicio() {
       <h2>Categorías destacadas</h2>
       <div className="categorias-destacadas">
         {categorias.slice(0,3).map((c,i)=>(
-          <Link key={i} to={`/buscar?categoria=${encodeURIComponent(c)}`} className="categoria-card">
+          <div key={i} className="categoria-card" onClick={() => irACategoria(c)}>
             <img src={imagenesCategorias[i]} className="categoria-imagen" alt={c} />
             <span>{c}</span>
-          </Link>
+          </div>
         ))}
       </div>
 
       <h2>Más vendidos del mes</h2>
-          <ul className="lista-productos">
-            {top12.slice(0,6).map(p => (
-              <li key={p.id} className="mini-card">
-                <Link to={`/productos/${p.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <img src={p.imagenUrl} alt={p.nombre} />
-                  <div className="producto-info">
-                    <strong>{p.nombre}</strong>
-                    <div className="small">{p.categoria}</div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+      <ul className="lista-productos">
+        {top12.slice(0,6).map(p => (
+          <li key={p.id} className="mini-card">
+            <Link to={`/productos/${p.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <img src={p.imagenUrl} alt={p.nombre} />
+              <div className="producto-info">
+                <strong>{p.nombre}</strong>
+                <div className="small">{p.categoria}</div>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
 
       <h2>Categorías nuevas</h2>
-        <div className="categorias-destacadas">
-          {categorias.slice(3,6).map((c, i) => (
-            <Link 
-              key={i} 
-              to={`/buscar?categoria=${encodeURIComponent(c)}`} 
-              className="categoria-card"
-            >
-              <img src={imagenesCategorias[i+3]} className="categoria-imagen" alt={c} />
-              <span>{c}</span>
-            </Link>
-          ))}
-        </div>
+      <div className="categorias-destacadas">
+        {categorias.slice(3,6).map((c, i) => (
+          <div 
+            key={i} 
+            className="categoria-card"
+            onClick={() => irACategoria(c)}
+          >
+            <img src={imagenesCategorias[i+3]} className="categoria-imagen" alt={c} />
+            <span>{c}</span>
+          </div>
+        ))}
+      </div>
 
       <h2>Productos nuevos</h2>
-          <ul className="lista-productos">
-            {nuevos6.map(p => (
-              <li key={p.id} className="mini-card">
-                <Link to={`/productos/${p.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <img src={p.imagenUrl} alt={p.nombre} />
-                  <div className="producto-info">
-                    <strong>{p.nombre}</strong>
-                    <div className='small'>{p.categoria}</div>
-                  </div>
-                </Link>
-              </li>
-            ))}
-          </ul>
+      <ul className="lista-productos">
+        {nuevos6.map(p => (
+          <li key={p.id} className="mini-card">
+            <Link to={`/productos/${p.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <img src={p.imagenUrl} alt={p.nombre} />
+              <div className="producto-info">
+                <strong>{p.nombre}</strong>
+                <div className='small'>{p.categoria}</div>
+              </div>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </section>
   )
 }

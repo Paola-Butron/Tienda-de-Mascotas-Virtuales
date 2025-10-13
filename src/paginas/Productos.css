@@ -166,3 +166,22 @@
   }
 }
 
+.precio {
+  color: #f38744;
+  font-weight: 800;
+}
+
+.precio-original {
+  color: #888;
+  text-decoration: line-through;
+  font-weight: normal;
+  margin: 0;
+  text-align: left;
+}
+
+.precio-descuento {
+  color: #f38744;
+  font-weight: 800;
+  margin: 0;
+}
+

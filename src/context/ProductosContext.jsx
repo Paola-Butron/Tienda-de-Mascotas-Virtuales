@@ -55,39 +55,71 @@ export function ProductosProvider({ children }) {
     }
   });
 
+  // Si no hay categorías registradas, inicializa las predeterminadas
   useEffect(() => {
     if (categorias.length === 0) {
       setCategorias(['Brainy', 'Techy', 'Cuddly', 'Questy', 'Arty', 'Herity']);
     }
   }, []);
 
+  // Guardar todo en localStorage cuando haya cambios
   useEffect(() => {
     const payload = { productos, carrito, guardados, categorias };
     localStorage.setItem(STORAGE, JSON.stringify(payload));
   }, [productos, carrito, guardados, categorias]);
 
-  const agregarProducto = (producto) => setProductos(prev => [...prev, { ...producto, id: Date.now(), activo: true }]);
+  // ✅ Aplica el descuento del 30% a los productos "Brainy"
+  const productosConDescuento = productos.map(p => {
+    if (p.categoria?.toLowerCase() === "brainy") {
+      return {
+        ...p,
+        precioDescuento: +(p.precio * 0.7).toFixed(2),
+        tieneDescuento: true
+      };
+    }
+    return { 
+      ...p, 
+      precioDescuento: p.precio, 
+      tieneDescuento: false 
+    };
+  });
+
+  // ----- FUNCIONES DE GESTIÓN DE PRODUCTOS -----
+  const agregarProducto = (producto) => 
+    setProductos(prev => [...prev, { ...producto, id: Date.now(), activo: true }]);
+
   const eliminarProducto = (id) => { 
     setProductos(prev => prev.filter(p => p.id !== id)); 
     setCarrito(prev => prev.filter(i => i.id !== id)); 
     setGuardados(prev => prev.filter(i => i.id !== id)); 
   };
-  const actualizarProducto = (prod) => setProductos(prev => prev.map(p => p.id === prod.id ? prod : p));
-  const toggleActivo = (id) => setProductos(prev => prev.map(p => p.id === id ? { ...p, activo: !p.activo } : p));
 
+  const actualizarProducto = (prod) => 
+    setProductos(prev => prev.map(p => p.id === prod.id ? prod : p));
+
+  const toggleActivo = (id) => 
+    setProductos(prev => prev.map(p => p.id === id ? { ...p, activo: !p.activo } : p));
+
+  // ----- FUNCIONES DEL CARRITO -----
   const agregarAlCarrito = (producto, cantidad = 1) => {
     const p = productos.find(x => x.id === producto.id);
     if (!p || p.activo === false) return;
     setCarrito(prev => {
       const found = prev.find(i => i.id === producto.id);
-      if (found) return prev.map(i => i.id === producto.id ? { ...i, cantidad: i.cantidad + cantidad } : i);
+      if (found) {
+        return prev.map(i => i.id === producto.id ? { ...i, cantidad: i.cantidad + cantidad } : i);
+      }
       return [...prev, { ...producto, cantidad }];
     });
   };
 
-  const quitarDelCarrito = (id) => setCarrito(prev => prev.filter(i => i.id !== id));
-  const cambiarCantidad = (id, cantidad) => setCarrito(prev => prev.map(i => i.id === id ? { ...i, cantidad } : i));
+  const quitarDelCarrito = (id) => 
+    setCarrito(prev => prev.filter(i => i.id !== id));
 
+  const cambiarCantidad = (id, cantidad) => 
+    setCarrito(prev => prev.map(i => i.id === id ? { ...i, cantidad } : i));
+
+  // ----- FUNCIONES DE GUARDADOS -----
   const guardarParaDespues = (id) => {
     const item = carrito.find(i => i.id === id);
     if (!item) return;
@@ -102,13 +134,17 @@ export function ProductosProvider({ children }) {
     setCarrito(prev => [...carrito, item]);
   };
 
-  const eliminarGuardado = (id) => setGuardados(prev => prev.filter(i => i.id !== id));
+  const eliminarGuardado = (id) => 
+    setGuardados(prev => prev.filter(i => i.id !== id));
 
-  const agregarCategoria = (nombre) => setCategorias(prev => [...prev, nombre]);
+  const agregarCategoria = (nombre) => 
+    setCategorias(prev => [...prev, nombre]);
 
+  // ----- RETORNO DEL CONTEXTO -----
   return (
     <ProductosContext.Provider value={{
-      productos, agregarProducto, eliminarProducto, actualizarProducto, toggleActivo,
+      productos: productosConDescuento,
+      agregarProducto, eliminarProducto, actualizarProducto, toggleActivo,
       carrito, agregarAlCarrito, quitarDelCarrito, cambiarCantidad,
       guardados, guardarParaDespues, regresarAlCarrito, eliminarGuardado,
       categorias, agregarCategoria

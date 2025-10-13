@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useProductos } from '../context/ProductosContext';
 import './Pomodoro.css';
+import sonidoFinal from "/sound/alarm.mp3";
 
 export default function Pomodoro() {
   const [mode, setMode] = useState('focus');
@@ -19,13 +20,14 @@ export default function Pomodoro() {
   const FOCUS_TIME = 25 * 60;
   const SHORT_BREAK = 5 * 60;
   const LONG_BREAK = 15 * 60;
-
+  const audio = new Audio(sonidoFinal);
   // Timer logic
   useEffect(() => {
     if (isRunning) {
       timerRef.current = setInterval(() => {
         setTimeLeft(prev => {
           if (prev <= 1) {
+            audio.play();
             handleSessionEnd();
             return 0;
           }
