@@ -157,7 +157,7 @@ export default function Navbar() {
                 <div className="dropdown dropdown-fun">
                   <div className="fun-grid">
                     <Link to="/pomodoro" className="fun-card">
-                      <div className="fun-img" style={{ backgroundImage: "url('//Aqui debe ir la direccion de tu imagen')" }}>
+                      <div className="fun-img" style={{ backgroundImage: "url('/images/Pomodoro.png')" }}>
                         <div className="fun-caption">Pomodoro</div>
                       </div>
                     </Link>

@@ -1,19 +1,26 @@
 // src/paginas/Pomodoro.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { useProductos } from '../context/ProductosContext';
 import './Pomodoro.css';
 
 export default function Pomodoro() {
-  const [mode, setMode] = useState('focus'); // focus, short, long
+  const [mode, setMode] = useState('focus');
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [cycleCount, setCycleCount] = useState(0);
   const timerRef = useRef(null);
 
+  const [menuAbierto, setMenuAbierto] = useState(false);
+  const [mascotaSeleccionada, setMascotaSeleccionada] = useState(null);
+
+  const { productos } = useProductos();
+  const mascotasActivas = productos.filter(p => p.activo);
+
   const FOCUS_TIME = 25 * 60;
   const SHORT_BREAK = 5 * 60;
   const LONG_BREAK = 15 * 60;
 
-  // Iniciar el timer
+  // Timer logic
   useEffect(() => {
     if (isRunning) {
       timerRef.current = setInterval(() => {
@@ -33,11 +40,8 @@ export default function Pomodoro() {
 
   const handleSessionEnd = () => {
     if (mode === 'focus') {
-      // Termina Focus, marca la bolita
       const nextCycle = cycleCount + 1;
       setCycleCount(nextCycle);
-
-      // Decide el break siguiente
       if (nextCycle % 4 === 0) {
         setMode('long');
         setTimeLeft(LONG_BREAK);
@@ -45,18 +49,15 @@ export default function Pomodoro() {
         setMode('short');
         setTimeLeft(SHORT_BREAK);
       }
-      // No se detiene, sigue corriendo automáticamente
-    } else if (mode === 'short' || mode === 'long') {
-      // Termina un break, vuelve a Focus
+    } else {
       setMode('focus');
       setTimeLeft(FOCUS_TIME);
-      if (mode === 'long') setCycleCount(0); // resetear ciclos después del long break
+      if (mode === 'long') setCycleCount(0);
     }
   };
 
   const startTimer = () => setIsRunning(true);
   const pauseTimer = () => setIsRunning(false);
-
   const resetTimer = () => {
     clearInterval(timerRef.current);
     setIsRunning(false);
@@ -69,7 +70,7 @@ export default function Pomodoro() {
     clearInterval(timerRef.current);
     setIsRunning(false);
     setMode(newMode);
-    setCycleCount(newMode === 'focus' ? cycleCount : 0); // resetear ciclos solo si cambias manualmente
+    setCycleCount(newMode === 'focus' ? cycleCount : 0);
     if (newMode === 'focus') setTimeLeft(FOCUS_TIME);
     if (newMode === 'short') setTimeLeft(SHORT_BREAK);
     if (newMode === 'long') setTimeLeft(LONG_BREAK);
@@ -81,8 +82,50 @@ export default function Pomodoro() {
     return `${m}:${s}`;
   };
 
+  // 🧩 Generar mosaico una sola vez por mascota seleccionada
+  const mosaico = useMemo(() => {
+    if (!mascotaSeleccionada) return null;
+
+    const tiles = [];
+    const columnas = 10;
+    const filas = 6;
+    const espaciadoX = 8; // % adicional de separación horizontal
+    const espaciadoY = 10; // % adicional de separación vertical
+
+    for (let y = 0; y < filas; y++) {
+      for (let x = 0; x < columnas; x++) {
+        const rotacion = Math.floor(Math.random() * 360);
+        const imagen =
+          mascotaSeleccionada.imagenUrlCartoon ||
+          mascotaSeleccionada.imagenUrl;
+
+        tiles.push(
+          <img
+            key={`${x}-${y}`}
+            src={imagen}
+            alt={mascotaSeleccionada.nombre}
+            className="tile"
+            style={{
+              top: `${(y * 100) / filas + y * espaciadoY}%`,
+              left: `${(x * 100) / columnas + x * espaciadoX}%`,
+              transform: `rotate(${rotacion}deg)`,
+            }}
+          />
+        );
+      }
+    }
+    return tiles;
+  }, [mascotaSeleccionada]);
+
   return (
     <div className="pomodoro-root">
+      {/* 🧱 Fondo tipo mosaico */}
+      {mascotaSeleccionada && (
+        <div className="mosaic-bg">
+          {mosaico}
+        </div>
+      )}
+
       <div className="pomodoro-container">
         <h1 className="pomodoro-title">¿En qué te quieres concentrar?</h1>
 
@@ -128,6 +171,33 @@ export default function Pomodoro() {
           )}
           <button className="btn reset-btn" onClick={resetTimer}>⟳</button>
         </div>
+      </div>
+
+      {/* 🐾 Botón flotante */}
+      <button
+        className="boton-patita"
+        onClick={() => setMenuAbierto(!menuAbierto)}
+      >
+        🐾
+      </button>
+
+      {/* 🐕 Menú lateral de mascotas */}
+      <div className={`menu-mascotas ${menuAbierto ? 'abierto' : ''}`}>
+        <h3>Elige tu mascota</h3>
+        <ul>
+          {mascotasActivas.map((m) => (
+            <li
+              key={m.id}
+              onClick={() => {
+                setMascotaSeleccionada(m);
+                setMenuAbierto(false);
+              }}
+            >
+              <img src={m.imagenUrlCartoon || m.imagenUrl} alt={m.nombre} />
+              <span>{m.nombre}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

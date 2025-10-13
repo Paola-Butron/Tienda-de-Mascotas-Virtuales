@@ -1,25 +1,22 @@
-import { Link } from 'react-router-dom'
-import { useProductos } from '../context/ProductosContext'
-import { motion } from 'framer-motion'
+import { useNavigate } from "react-router-dom"
 
 export default function ProductoItem({ producto }) {
-  const { eliminarProducto } = useProductos()
-
-  if (!producto.activo) return null
+  const navigate = useNavigate()
 
   return (
-    <motion.li className="producto-item" initial={{opacity:0, y:8}} animate={{opacity:1,y:0}} transition={{duration:0.18}}>
-      <img src={producto.imagenUrl || '/images/perro.svg'} alt={producto.nombre} />
-      <div className="contenido">
-        <h4>{producto.nombre}</h4>
-        <p className="small">{producto.descripcion}</p>
-        <p className="precio">S/ {producto.precio}</p>
+    <li className="producto-item">
+      <h3 className="nombre">{producto.nombre}</h3>
+
+      <div className="producto-info">
+        <div className="imagen-contenedor">
+          <img src={producto.imagenUrl} alt={producto.nombre} />
+        </div>
+        <p className="precio">S/ {producto.precio.toFixed(2)}</p>
       </div>
-      <div className="acciones">
-        <Link to={`/productos/${producto.id}`}><button>Ver</button></Link>
-        <Link to={`/productos/${producto.id}/editar`}><button>Editar</button></Link>
-        <button onClick={() => eliminarProducto(producto.id)}>Eliminar</button>
-      </div>
-    </motion.li>
+
+      <button className="comprar" onClick={() => navigate(`/productos/${producto.id}`)}>
+        Comprar
+      </button>
+    </li>
   )
 }

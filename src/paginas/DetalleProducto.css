@@ -42,10 +42,13 @@
   color: #111;
 }
 
-.precio {
+.detalle-producto .precio {
   font-weight: 700;
   font-size: 1.2rem;
   margin-bottom: 16px;
+  color: #eb4544;
+  text-align: left; /* 👈 Asegura que no se vaya a la derecha */
+  margin: 12px 0;
 }
 
 .btn-agregar {

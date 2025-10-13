@@ -1,47 +1,66 @@
-import React, { useState } from 'react';
-import { useProductos } from '../context/ProductosContext';
-import ProductoItem from '../componentes/ProductoItem';
-
-function Paginate({ itemsPerPage, items, render }) {
-  const [page, setPage] = useState(1);
-  const total = Math.max(1, Math.ceil(items.length / itemsPerPage));
-  const start = (page - 1) * itemsPerPage;
-  const pageItems = items.slice(start, start + itemsPerPage);
-
-  return (
-    <div>
-      <div>{render(pageItems)}</div>
-      <div style={{ marginTop: 12 }}>
-        <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>Anterior</button>
-        <span style={{ margin: '0 8px' }}>Página {page} / {total}</span>
-        <button onClick={() => setPage(p => Math.min(total, p + 1))} disabled={page === total}>Siguiente</button>
-      </div>
-    </div>
-  );
-}
+import { useState } from 'react'
+import { useProductos } from '../context/ProductosContext'
+import ProductoItem from '../componentes/ProductoItem'
+import './Productos.css';
 
 export default function Productos() {
-  const { productos } = useProductos();
-  const activos = productos.filter(p => p.activo);
+  const { productos } = useProductos()
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todas')
+  const [orden, setOrden] = useState('ninguno')
 
-  if (!activos.length) return <div>No hay productos disponibles</div>;
+  // --- Filtrar productos activos y por categoría ---
+  let productosFiltrados = productos.filter(
+    (p) => p.activo && (categoriaSeleccionada === 'Todas' || p.categoria === categoriaSeleccionada)
+  )
+
+  // --- Ordenar productos ---
+  if (orden === 'precioAsc') {
+    productosFiltrados.sort((a, b) => a.precio - b.precio)
+  } else if (orden === 'precioDesc') {
+    productosFiltrados.sort((a, b) => b.precio - a.precio)
+  } else if (orden === 'alfabetico') {
+    productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre))
+  }
 
   return (
-    <section className="productos">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h1>Catálogo de productos</h1>
-        <button>Agregar producto</button>
+    <div className="productos-container">
+      <h2>Nuestros Productos</h2>
+
+      {/* === FILTROS Y ORDEN === */}
+      <div className="filtros">
+        <div className="categorias">
+          {['Todas', 'Brainy', 'Techy', 'Cuddly', 'Questy', 'Arty', 'Herity'].map((cat) => (
+            <button
+              key={cat}
+              className={categoriaSeleccionada === cat ? 'activo' : ''}
+              onClick={() => setCategoriaSeleccionada(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        <div className="orden">
+          <label htmlFor="orden">Ordenar por:</label>
+          <select id="orden" value={orden} onChange={(e) => setOrden(e.target.value)}>
+            <option value="ninguno">Sin ordenar</option>
+            <option value="precioAsc">Precio (menor a mayor)</option>
+            <option value="precioDesc">Precio (mayor a menor)</option>
+            <option value="alfabetico">Alfabéticamente</option>
+          </select>
+        </div>
       </div>
 
-      <Paginate
-        itemsPerPage={12}
-        items={activos}
-        render={(items) => (
-          <ul className="lista-productos">
-            {items.map(p => <ProductoItem key={p.id} producto={p} />)}
-          </ul>
+      {/* === LISTA DE PRODUCTOS === */}
+      <div className="lista-productos">
+        {productosFiltrados.length > 0 ? (
+          productosFiltrados.map((prod) => (
+            <ProductoItem key={prod.id} producto={prod} />
+          ))
+        ) : (
+          <p className="mensaje-vacio">No hay productos disponibles en esta categoría.</p>
         )}
-      />
-    </section>
-  );
+      </div>
+    </div>
+  )
 }

@@ -9,6 +9,7 @@ const sample = [
       "beneficio": "Desarrolla tu lógica y creatividad"
     },
     "imagenUrl": "/images/BR01.png",
+    "imagenUrlCartoon": "/images/BR01C.png",
     "precio": 28.50,
     "categoria": "Brainy",
     "activo": true,
@@ -24,6 +25,7 @@ const sample = [
       "beneficio": "Mejora la memoria y aprendizaje"
     },
     "imagenUrl": "/images/BR02.png",
+    "imagenUrlCartoon": "/images/BR02C.png",
     "precio": 31.75,
     "categoria": "Brainy",
     "activo": true,
@@ -39,6 +41,7 @@ const sample = [
       "beneficio": "Desarrolla pensamiento crítico"
     },
     "imagenUrl": "/images/BR03.png",
+    "imagenUrlCartoon": "/images/BR03C.png",
     "precio": 33.20,
     "categoria": "Brainy",
     "activo": true,
@@ -54,6 +57,7 @@ const sample = [
       "beneficio": "Refuerza habilidades numéricas"
     },
     "imagenUrl": "/images/BR04.png",
+    "imagenUrlCartoon": "/images/BR04C.png",
     "precio": 29.90,
     "categoria": "Brainy",
     "activo": true,
@@ -69,6 +73,7 @@ const sample = [
       "beneficio": "Mejora lenguaje y lectura"
     },
     "imagenUrl": "/images/BR05.png",
+    "imagenUrlCartoon": "/images/BR05C.png",
     "precio": 34.60,
     "categoria": "Brainy",
     "activo": true,
@@ -84,6 +89,7 @@ const sample = [
       "beneficio": "Fomenta curiosidad científica"
     },
     "imagenUrl": "/images/BR06.png",
+    "imagenUrlCartoon": "/images/BR06C.png",
     "precio": 30.40,
     "categoria": "Brainy",
     "activo": true,
@@ -99,6 +105,7 @@ const sample = [
       "beneficio": "Aprende historia de forma divertida"
     },
     "imagenUrl": "/images/BR07.png",
+    "imagenUrlCartoon": "/images/BR07C.png",
     "precio": 32.80,
     "categoria": "Brainy",
     "activo": true,
@@ -114,6 +121,7 @@ const sample = [
       "beneficio": "Descubre lugares del mundo"
     },
     "imagenUrl": "/images/BR08.png",
+    "imagenUrlCartoon": "/images/BR08C.png",
     "precio": 27.90,
     "categoria": "Brainy",
     "activo": true,
