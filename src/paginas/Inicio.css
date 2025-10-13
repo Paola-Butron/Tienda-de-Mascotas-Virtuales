@@ -1,0 +1,214 @@
+.inicio {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+.inicio-principal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  margin-bottom: 20px;
+}
+
+.inicio-principal .inicio-texto {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.inicio-principal .inicio-texto h1 {
+  margin: 0 0 10px 0;
+  font-size: 2rem;
+}
+
+.inicio-principal .inicio-texto p {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.inicio-principal .inicio-imagen {
+  width: 300px; /* Ajusta el tamaño de la imagen principal */
+  border-radius: 12px;
+}
+
+.categorias-destacadas {
+  display: flex;
+  gap: 16px;
+  width: 100%; /* ocupa todo el ancho de la página */
+  margin-top: 12px;
+}
+
+.categoria-card {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-decoration: none;
+  color: #111;
+  flex: 1; /* cada card ocupa igual proporción */
+}
+
+.categoria-card img.categoria-imagen {
+  width: 80px; /* tamaño aumentado */
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 16px;
+}
+
+.categoria-card span {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.categorias-nuevas {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.lista-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 12px 0;
+  list-style: none;
+}
+
+.mini-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.mini-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.mini-card:hover {
+  transform: translateY(-4px);
+}
+
+.producto-info {
+  text-align: center;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.card.publicidad {
+  margin-top: 20px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.inicio-principal button {
+  background-color: #FF8A00; /* naranja */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+/* Contenedor del carrusel de ofertas */
+.oferta-carrusel {
+  margin-top: 30px;
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center; /* centra verticalmente los hijos */
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  min-height: 170px; /* evita encogimiento */
+}
+
+/* Texto de la oferta */
+.oferta-texto {
+  max-width: 50%;
+  padding-right: 20px; /* separación de la línea */
+  z-index: 1;
+}
+
+.oferta-texto h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.oferta-texto p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Separador vertical fijo */
+.oferta-separador {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: calc(50% + 80px);
+  width: 2px;
+  background: #ddd;
+  z-index: 0;
+}
+
+/* Imagen siempre a la derecha y centrada verticalmente */
+.oferta-imagen {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Bolitas de navegación del carrusel */
+.carrusel-bolitas {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.carrusel-bolitas span {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carrusel-bolitas span.active {
+  background: #f38744;
+}
