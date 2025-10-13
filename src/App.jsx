@@ -18,6 +18,11 @@ import AdminDashboard from './paginas/admin/AdminDashboard'
 import AdminProductos from './paginas/admin/AdminProductos'
 import AdminUsuarios from './paginas/admin/AdminUsuarios'
 import Categorias from './paginas/admin/Categorias'
+import NotFound from './paginas/NotFound'
+import Pomodoro from './paginas/Pomodoro'
+
+
+
 
 export default function App(){
   return (
@@ -42,8 +47,11 @@ export default function App(){
           <Route path="/admin/productos" element={<AdminProductos />} />
           <Route path="/admin/usuarios" element={<AdminUsuarios />} />
           <Route path="/admin/categorias" element={<Categorias />} />
+          <Route path="/pomodoro" element={<Pomodoro />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </div>
   )
 }
+

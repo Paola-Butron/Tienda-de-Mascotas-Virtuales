@@ -1,0 +1,142 @@
+/* src/paginas/Pomodoro.css */
+
+.pomodoro-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  overflow: hidden;
+  color: #fff;
+  z-index: -9999;
+}
+
+.pomodoro-container {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 70px 60px;
+  border-radius: 30px;
+  text-align: center;
+  width: 85%;
+  max-width: 900px;
+  box-sizing: border-box;
+}
+
+.pomodoro-title {
+  font-size: 2.8rem;
+  margin-bottom: 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mode-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 35px;
+}
+
+.mode-btn {
+  border-radius: 14px;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.3rem;
+  transition: all 0.2s ease;
+  height: 60px; /* igual altura para todos */
+  padding: 0 20px; /* 20px más ancho que el texto */
+  min-width: fit-content; /* se ajusta al texto */
+}
+
+.mode-btn:hover,
+.mode-btn.active {
+  background: #f38744;
+  border-color: #f38744;
+}
+
+.timer-display {
+  font-size: 14rem;
+  font-weight: bold;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.pomodoro-controls {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.btn {
+  padding: 16px 36px;
+  border-radius: 14px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  font-weight: 700;
+}
+
+.start-btn {
+  background: #f38744;
+  color: #fff;
+}
+
+.reset-btn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.start-btn:hover {
+  opacity: 0.9;
+}
+
+.reset-btn:hover {
+  background: #f38744;
+  border-color: #f38744;
+}
+
+.mosaic-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.tile {
+  pointer-events: none;
+  user-select: none;
+}
+
+.focus-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cycle-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.cycle-dot {
+  width: 10px;
+  height: 10px;
+  background: #888;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+
+.cycle-dot.filled {
+  background: #f38744;
+}

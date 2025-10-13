@@ -1,5 +1,5 @@
 .inicio {
-  max-width: 1100px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
   font-family: Inter, Arial, Helvetica, sans-serif;
@@ -134,4 +134,81 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.2s ease;
+}
+/* Contenedor del carrusel de ofertas */
+.oferta-carrusel {
+  margin-top: 30px;
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center; /* centra verticalmente los hijos */
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  min-height: 170px; /* evita encogimiento */
+}
+
+/* Texto de la oferta */
+.oferta-texto {
+  max-width: 50%;
+  padding-right: 20px; /* separación de la línea */
+  z-index: 1;
+}
+
+.oferta-texto h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+}
+
+.oferta-texto p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Separador vertical fijo */
+.oferta-separador {
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: calc(50% + 80px);
+  width: 2px;
+  background: #ddd;
+  z-index: 0;
+}
+
+/* Imagen siempre a la derecha y centrada verticalmente */
+.oferta-imagen {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+/* Bolitas de navegación del carrusel */
+.carrusel-bolitas {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+
+.carrusel-bolitas span {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.carrusel-bolitas span.active {
+  background: #f38744;
 }
