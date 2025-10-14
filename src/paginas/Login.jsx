@@ -1,29 +1,14 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import { useNavigate } from "react-router-dom";
-=======
 import { useNavigate, Link } from "react-router-dom"; 
->>>>>>> origin/main
 import "./login.css";
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
-<<<<<<< HEAD
-=======
   const [error, setError] = useState("");
->>>>>>> origin/main
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    if (form.email === "" || form.password === "") {
-      alert("Por favor, completa todos los campos.");
-      return;
-    }
-    alert(`Bienvenido, ${form.email}! 😺`);
-    navigate("/");
-=======
 
     if (!form.email || !form.password) {
       setError("Por favor, completa todos los campos.");
@@ -57,7 +42,6 @@ export default function Login() {
     } else {
       setError("Correo o contraseña incorrectos.");
     }
->>>>>>> origin/main
   };
 
   return (
@@ -79,25 +63,17 @@ export default function Login() {
             value={form.password}
             onChange={(e) => setForm({ ...form, password: e.target.value })}
           />
-<<<<<<< HEAD
-=======
 
           {error && <p className="error-text">{error}</p>}
 
->>>>>>> origin/main
           <button type="submit" className="login-btn">
             Ingresar
           </button>
         </form>
 
         <div className="login-links">
-<<<<<<< HEAD
-          <a href="/register">Crear cuenta</a>
-          <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
-=======
           <Link to="/register">Crear cuenta</Link> 
           <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link> 
->>>>>>> origin/main
         </div>
       </div>
     </section>
