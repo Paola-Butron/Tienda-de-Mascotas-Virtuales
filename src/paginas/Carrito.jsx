@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 export default function Carrito() {
   const { carrito, quitarDelCarrito, cambiarCantidad, guardarParaDespues, guardados, regresarAlCarrito, eliminarGuardado } = useProductos()
 
-  // ✅ Calcula el precio real (considerando descuento)
   const calcularPrecio = (item) => item.tieneDescuento ? item.precioDescuento : item.precio
 
   const total = carrito
@@ -30,7 +29,6 @@ export default function Carrito() {
                 <div className="contenido">
                   <h4>{item.nombre}</h4>
 
-                  {/* ✅ Mostrar precios con descuento si aplica */}
                   {item.tieneDescuento ? (
                     <div className="precio">
                       <p
@@ -89,8 +87,6 @@ export default function Carrito() {
               <img src={g.imagenUrl} alt={g.nombre} />
               <div className="contenido">
                 <h4>{g.nombre}</h4>
-
-                {/* ✅ Mostrar precios también en guardados */}
                 {g.tieneDescuento ? (
                   <div className="precio">
                     <p

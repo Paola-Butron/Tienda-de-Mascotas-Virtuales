@@ -1,5 +1,3 @@
-/* src/paginas/Pomodoro.css */
-
 .pomodoro-root {
   position: fixed;
   top: 0;
@@ -49,9 +47,9 @@
   font-weight: 700;
   font-size: 1.3rem;
   transition: all 0.2s ease;
-  height: 60px; /* igual altura para todos */
-  padding: 0 20px; /* 20px más ancho que el texto */
-  min-width: fit-content; /* se ajusta al texto */
+  height: 60px;
+  padding: 0 20px; 
+  min-width: fit-content; 
 }
 
 .mode-btn:hover,

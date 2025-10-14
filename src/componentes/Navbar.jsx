@@ -64,7 +64,6 @@ export default function Navbar() {
         {/* CENTER */}
         <div className="nav-center-wrapper">
           <div className="nav-center">
-            {/* 🔎 Buscar con menú dinámico */}
             <div className="buscador" role="search" aria-label="Buscar productos">
               <input
                 aria-label="Buscar"
@@ -80,7 +79,6 @@ export default function Navbar() {
               />
 
               {mostrarResultados && (
-                /* NOTA: ya no usamos la clase genérica "dropdown" aquí para no heredar opacity:0 */
                 <div className="dropdown-search">
                   {resultados.length > 0 ? (
                     <ul className="search-results">
@@ -88,7 +86,6 @@ export default function Navbar() {
                         <li
                           key={p.id}
                           className="search-item"
-                          // usar onMouseDown evita que el blur cierre el dropdown antes del navigate
                           onMouseDown={() => handleProductoClick(p.id)}
                         >
                           <img

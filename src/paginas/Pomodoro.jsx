@@ -1,4 +1,3 @@
-// src/paginas/Pomodoro.jsx
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useProductos } from '../context/ProductosContext';
 import './Pomodoro.css';
@@ -21,7 +20,7 @@ export default function Pomodoro() {
   const SHORT_BREAK = 5 * 60;
   const LONG_BREAK = 15 * 60;
   const audio = new Audio(sonidoFinal);
-  // Timer logic
+
   useEffect(() => {
     if (isRunning) {
       timerRef.current = setInterval(() => {
@@ -84,15 +83,15 @@ export default function Pomodoro() {
     return `${m}:${s}`;
   };
 
-  // 🧩 Generar mosaico una sola vez por mascota seleccionada
+
   const mosaico = useMemo(() => {
     if (!mascotaSeleccionada) return null;
 
     const tiles = [];
     const columnas = 10;
     const filas = 6;
-    const espaciadoX = 8; // % adicional de separación horizontal
-    const espaciadoY = 10; // % adicional de separación vertical
+    const espaciadoX = 8; 
+    const espaciadoY = 10; 
 
     for (let y = 0; y < filas; y++) {
       for (let x = 0; x < columnas; x++) {

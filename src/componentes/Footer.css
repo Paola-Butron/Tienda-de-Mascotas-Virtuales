@@ -9,13 +9,12 @@
   margin-right: 1.5%;
 }
 
-/* Hacemos que ocupe todo el ancho y los extremos */
 .footer-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Mantiene izquierda-centro-derecha */
+  justify-content: space-between; 
   width: 100%;
-  padding: 0 40px; /* Espacio lateral */
+  padding: 0 40px;
 }
 
 /* IZQUIERDA */

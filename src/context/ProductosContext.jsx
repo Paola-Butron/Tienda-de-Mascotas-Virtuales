@@ -66,7 +66,6 @@ export function ProductosProvider({ children }) {
     localStorage.setItem(STORAGE, JSON.stringify(payload));
   }, [productos, carrito, guardados, categorias]);
 
-  // ✅ Aplica el descuento del 30% a los productos "Brainy"
   const productosConDescuento = productos.map(p => {
     if (p.categoria?.toLowerCase() === "brainy") {
       return {

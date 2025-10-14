@@ -47,7 +47,7 @@
   font-size: 1.2rem;
   margin-bottom: 16px;
   color: #eb4544;
-  text-align: left; /* 👈 Asegura que no se vaya a la derecha */
+  text-align: left;
   margin: 12px 0;
 }
 

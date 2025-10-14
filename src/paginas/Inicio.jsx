@@ -63,7 +63,6 @@ export default function Inicio() {
     }
   }
 
-  // Refs para animar los carruseles
   const vendidosRef = useRef(null)
   const nuevosRef = useRef(null)
 
@@ -72,7 +71,7 @@ export default function Inicio() {
     carruseles.forEach(carrusel => {
       if (!carrusel) return
       let scrollAmount = 0
-      const velocidad = 1 // velocidad del scroll
+      const velocidad = 1
       const intervalo = setInterval(() => {
         scrollAmount += velocidad
         if (scrollAmount >= carrusel.scrollWidth / 2) scrollAmount = 0

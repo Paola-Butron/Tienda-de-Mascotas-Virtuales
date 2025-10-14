@@ -71,7 +71,7 @@
 }
 
 .mensaje-placeholder {
-  height: 30px; /* reserva el espacio aunque no haya mensaje */
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;

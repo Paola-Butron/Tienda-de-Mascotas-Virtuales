@@ -12,7 +12,6 @@ export default function Productos() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // 🟢 Detectar cambios en la URL
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
     const categoriaDesdeURL = queryParams.get('categoria')
