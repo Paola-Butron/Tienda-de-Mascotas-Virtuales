@@ -1,22 +1,51 @@
-import React from 'react'
-import { useUsuarios } from '../context/UsuariosContext'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Account.css";
 
-export default function Account(){
-  const { usuarioLogueado, ordenes } = useUsuarios()
-  if (!usuarioLogueado) return <div>Debes iniciar sesión. <Link to="/login">Entrar</Link></div>
-  const userOrders = ordenes.slice(0,20)
+export default function Account() {
+  const [usuario, setUsuario] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
+    if (!usuarioActivo) {
+      navigate("/login");
+    } else {
+      setUsuario(usuarioActivo);
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("usuarioActivo");
+    alert("Has cerrado sesión 🐾");
+    navigate("/");
+  };
+
+  if (!usuario) {
+    return <p>Cargando tu cuenta...</p>;
+  }
+
   return (
-    <section>
-      <h1>Mi cuenta</h1>
-      <div className="card">
-        <h3>Bienvenido, {usuarioLogueado.nombre}</h3>
-        <p>Email: {usuarioLogueado.email}</p>
-      </div>
-      <div className="card">
-        <h3>Órdenes recientes</h3>
-        <ul>{userOrders.map(o=> (<li key={o.id}><Link to={'/orden/'+o.id}>Orden #{o.id} - {o.estado}</Link></li>))}</ul>
+    <section className="account-container">
+      <div className="account-card">
+        <h1>Mi Cuenta</h1>
+        <p><strong>Nombre:</strong> {usuario.nombre}</p>
+        <p><strong>Apellido:</strong> {usuario.apellido}</p>
+        <p><strong>Correo:</strong> {usuario.correo}</p>
+
+        <div className="account-actions">
+          <button onClick={() => navigate("/editar-perfil")} className="btn editar">
+            Editar datos
+          </button>
+          <button onClick={() => navigate("/cambiar-password")} className="btn password">
+            Cambiar contraseña
+          </button>
+          <button onClick={handleLogout} className="btn logout">
+            Cerrar sesión
+          </button>
+        </div>
       </div>
     </section>
-  )
+  );
 }
