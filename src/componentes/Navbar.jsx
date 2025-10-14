@@ -170,7 +170,7 @@ export default function Navbar() {
                               className="link-like"
                               onClick={() =>
                                 navigate(
-                                  `/productos?accessorio=${encodeURIComponent(a)}`
+                                  `/still-working`
                                 )
                               }
                             >

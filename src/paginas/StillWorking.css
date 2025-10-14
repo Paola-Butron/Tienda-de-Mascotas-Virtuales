@@ -1,4 +1,4 @@
-.notfound-container {
+.stillworking-container {
   position: relative;
   width: 100%;
   height: 77vh;
@@ -9,27 +9,27 @@
   font-family: "Poppins", sans-serif;
 }
 
-.notfound-content {
+.stillworking-content {
   text-align: center;
   z-index: 2;
   color: #2c2c2c;
   animation: fadeIn 1.2s ease-in-out;
 }
 
-.notfound-content h1 {
+.stillworking-content h1 {
   font-size: 4rem;
   color: #f38744;
   margin-bottom: 0.5rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.notfound-content p {
+.stillworking-content p {
   font-size: 1.3rem;
   color: #456268;
   margin-bottom: 1.5rem;
 }
 
-.notfound-content button {
+.stillworking-content button {
   background-color: #f38744;
   color: white;
   border: none;
@@ -41,12 +41,12 @@
   box-shadow: 0 4px 10px rgba(183, 145, 75, 0.3);
 }
 
-.notfound-content button:hover {
+.stillworking-content button:hover {
   background-color: #182848;
   transform: scale(1.05);
 }
 
-.notfound-image {
+.stillworking-image {
   width: 320px;
   height: 320px;
   margin: 0 auto 1rem;
@@ -59,7 +59,7 @@
   animation: float 4s ease-in-out infinite;
 }
 
-.notfound-bg {
+.stillworking-bg {
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 50% 70%, rgba(255,255,255,0.4), transparent 70%),

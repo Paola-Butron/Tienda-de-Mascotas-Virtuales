@@ -1,7 +1,8 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './componentes/Navbar'
 import Inicio from './paginas/Inicio'
+import Footer from "./componentes/Footer";
 import Productos from './paginas/Productos'
 import SearchResults from './paginas/SearchResults'
 import DetalleProducto from './paginas/DetalleProducto'
@@ -20,11 +21,15 @@ import AdminUsuarios from './paginas/admin/AdminUsuarios'
 import Categorias from './paginas/admin/Categorias'
 import NotFound from './paginas/NotFound'
 import Pomodoro from './paginas/Pomodoro'
-
+import Shimeji from './paginas/Shimejis'
+import StillWorking from './paginas/StillWorking'
 
 
 
 export default function App(){
+  const location = useLocation();
+  const sinFooter = ["/pomodoro"];
+
   return (
     <div className="app-root">
       <Navbar />
@@ -48,9 +53,12 @@ export default function App(){
           <Route path="/admin/usuarios" element={<AdminUsuarios />} />
           <Route path="/admin/categorias" element={<Categorias />} />
           <Route path="/pomodoro" element={<Pomodoro />} />
+          <Route path="/shimejis" element={<Shimeji />} />
+          <Route path="/still-working" element={<StillWorking />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
+      {!sinFooter.includes(location.pathname) && <Footer />}
     </div>
   )
 }
