@@ -59,9 +59,9 @@ export default function App(){
           <Route path="/shimejis" element={<Shimeji />} />
           <Route path="/still-working" element={<StillWorking />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/admin/users" element={<UsersList/>}/>
+          <Route path="/admin/users" element={<UserList/>}/>
           <Route path="/admin/users/:id" element={<UserDetail/>}/>
-          <Route path="/admin/orders" element={<OrdersList/>}/>
+          <Route path="/admin/orders" element={<OrderList/>}/>
           <Route path="/admin/orders/:id" element={<OrderDetail/>}/>
 
         </Routes>
