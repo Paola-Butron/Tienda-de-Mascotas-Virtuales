@@ -36,7 +36,7 @@ export default function EditarPerfil() {
     });
 
     alert("Datos actualizados correctamente ✅");
-    navigate("/mi-cuenta");
+    navigate("/");
   };
 
   if (!usuarioLogueado) return null; // evita renderizar antes del redirect
