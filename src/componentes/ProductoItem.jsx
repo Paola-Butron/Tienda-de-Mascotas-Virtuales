@@ -11,7 +11,6 @@ export default function ProductoItem({ producto }) {
         <div className="imagen-contenedor">
           <img src={producto.imagenUrl} alt={producto.nombre} />
         </div>
-<<<<<<< HEAD
 
         {producto.tieneDescuento ? (
           <div className="precio">
@@ -21,9 +20,6 @@ export default function ProductoItem({ producto }) {
         ) : (
           <p className="precio">S/ {producto.precio.toFixed(2)}</p>
         )}
-=======
-        <p className="precio">S/ {producto.precio.toFixed(2)}</p>
->>>>>>> origin/main
       </div>
 
       <button className="comprar" onClick={() => navigate(`/productos/${producto.id}`)}>
