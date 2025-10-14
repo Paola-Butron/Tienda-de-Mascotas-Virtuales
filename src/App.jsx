@@ -2,6 +2,35 @@ import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './componentes/Navbar';
 import ScrollToTop from './componentes/ScrollToTop'
+<<<<<<< HEAD
+import Inicio from './paginas/Inicio'
+import Footer from "./componentes/Footer"
+import Productos from './paginas/Productos'
+import SearchResults from './paginas/SearchResults'
+import DetalleProducto from './paginas/DetalleProducto'
+import NuevoProducto from './paginas/NuevoProducto'
+import EditarProducto from './paginas/EditarProducto'
+import Carrito from './paginas/Carrito'
+import Checkout from './paginas/Checkout'
+import OrderComplete from './paginas/OrderComplete'
+import Login from './paginas/Login'
+import Register from './paginas/Register'
+import Account from './paginas/Account'
+import OrderDetail from './paginas/OrderDetail'
+import AdminDashboard from './paginas/admin/AdminDashboard'
+import AdminProductos from './paginas/admin/AdminProductos'
+import AdminUsuarios from './paginas/admin/AdminUsuarios'
+import Categorias from './paginas/admin/Categorias'
+import NotFound from './paginas/NotFound'
+import Pomodoro from './paginas/Pomodoro'
+import Shimeji from './paginas/Shimejis'
+import StillWorking from './paginas/StillWorking'
+
+
+
+
+export default function App(){
+=======
 import Footer from './componentes/Footer';
 import Inicio from './paginas/Inicio';
 import Productos from './paginas/Productos';
@@ -28,6 +57,7 @@ import Shimeji from './paginas/Shimejis';
 import StillWorking from './paginas/StillWorking';
 
 export default function App() {
+>>>>>>> 5e5f908550d2fd5c136cad1baafbfce43b885505
   const location = useLocation();
   const sinFooter = ["/pomodoro"];
 
