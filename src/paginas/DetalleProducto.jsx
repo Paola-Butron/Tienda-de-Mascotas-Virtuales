@@ -24,6 +24,7 @@ export default function DetalleProducto() {
           <li><strong>Poder Especial:</strong> {descripcion.poderEspecial}</li>
           <li><strong>Beneficio:</strong> {descripcion.beneficio}</li>
         </ul>
+<<<<<<< HEAD
         {producto.tieneDescuento ? (
           <div>
             <p style={{ textDecoration: 'line-through', color: '#888' }}>
@@ -38,6 +39,9 @@ export default function DetalleProducto() {
             S/ {producto.precio.toFixed(2)}
           </p>
         )}
+=======
+        <p className="precio">S/ {precio.toFixed(2)}</p>
+>>>>>>> origin/main
         <button className="btn-agregar" onClick={() => agregarAlCarrito(producto, 1)}>Agregar al carrito</button>
       </div>
     </section>

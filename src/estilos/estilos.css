@@ -1,5 +1,9 @@
 
+<<<<<<< HEAD
 :root{ --bg:#fff3ec; --card:#ffffff; --primary:#FF8A00; --muted:#6B7280 }
+=======
+:root{ --bg:#fff3ec; --card:#fff; --primary:#FF8A00; --muted:#6B7280 }
+>>>>>>> origin/main
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#111}
 .container {
@@ -25,6 +29,11 @@ body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);
 .formulario input, .formulario textarea{padding:10px;border-radius:8px;border:1px solid #eee}
 .acciones{display:flex;gap:8px;margin-top:6px}
 .acciones button{background:var(--primary);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
+<<<<<<< HEAD
+=======
+.small{color:var(--muted);font-size:0.9rem}
+.precio{font-weight:800;color:var(--primary)}
+>>>>>>> origin/main
 input[type='number']{width:60px;padding:6px;border-radius:6px;border:1px solid #ddd}
 
 button{

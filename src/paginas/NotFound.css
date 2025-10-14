@@ -1,7 +1,11 @@
 .notfound-container {
   position: relative;
   width: 100%;
+<<<<<<< HEAD
   height: 77vh;
+=======
+  height: 100vh;
+>>>>>>> origin/main
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,8 +51,13 @@
 }
 
 .notfound-image {
+<<<<<<< HEAD
   width: 320px;
   height: 320px;
+=======
+  width: 220px;
+  height: 220px;
+>>>>>>> origin/main
   margin: 0 auto 1rem;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 50%;

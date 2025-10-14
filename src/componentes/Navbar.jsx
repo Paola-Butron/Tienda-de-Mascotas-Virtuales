@@ -120,6 +120,7 @@ export default function Navbar() {
                     <div className="col">
                       <h4>Novedades</h4>
                       <ul>
+<<<<<<< HEAD
                         <li>
                           <button
                             className="link-like"
@@ -144,11 +145,17 @@ export default function Navbar() {
                             Los más lujosos
                           </button>
                         </li>
+=======
+                        <li><button className="link-like" onClick={() => handleSpecialView("ofertas")}>Ofertas Semanales</button></li>
+                        <li><button className="link-like" onClick={() => handleSpecialView("ventas")}>Los más vendidos</button></li>
+                        <li><button className="link-like" onClick={() => handleSpecialView("lujo")}>Los más lujosos</button></li>
+>>>>>>> origin/main
                       </ul>
                     </div>
                     <div className="col">
                       <h4>Categorías</h4>
                       <ul>
+<<<<<<< HEAD
                         {["Brainy", "Techy", "Cuddly", "Todas"].map((c) => (
                           <li key={c}>
                             <button
@@ -157,6 +164,11 @@ export default function Navbar() {
                             >
                               {c}
                             </button>
+=======
+                        {["Brainy", "Techy", "Cuddly", "Otros"].map((c) => (
+                          <li key={c}>
+                            <button className="link-like" onClick={() => handleCategoriaClick(c)}>{c}</button>
+>>>>>>> origin/main
                           </li>
                         ))}
                       </ul>
@@ -166,6 +178,7 @@ export default function Navbar() {
                       <ul>
                         {["Sombreros", "Ropa", "Juguetes", "Comida"].map((a) => (
                           <li key={a}>
+<<<<<<< HEAD
                             <button
                               className="link-like"
                               onClick={() =>
@@ -174,6 +187,9 @@ export default function Navbar() {
                                 )
                               }
                             >
+=======
+                            <button className="link-like" onClick={() => navigate(`/productos?accessorio=${encodeURIComponent(a)}`)}>
+>>>>>>> origin/main
                               {a}
                             </button>
                           </li>
@@ -187,7 +203,11 @@ export default function Navbar() {
               {/* Carrito */}
               <div className="menu-item has-dropdown cart-dropdown">
                 <button className="menu-btn">
+<<<<<<< HEAD
                   Carrito ({totalItems}) <span className="caret">▾</span>
+=======
+                  Carrito <span className="caret">▾</span>
+>>>>>>> origin/main
                 </button>
                 <div className="dropdown dropdown-cart">
                   <div className="cart-list">
@@ -196,12 +216,18 @@ export default function Navbar() {
                     ) : (
                       <>
                         <ul>
+<<<<<<< HEAD
                           {carrito.map((item) => (
                             <li key={item.id} className="cart-item">
                               <img
                                 src={item.imagenUrl || "/images/no-image.png"}
                                 alt={item.nombre}
                               />
+=======
+                          {carrito.map(item => (
+                            <li key={item.id} className="cart-item">
+                              <img src={item.imagenUrl || "//Aqui debe ir la direccion de tu imagen"} alt={item.nombre} />
+>>>>>>> origin/main
                               <div className="cart-info">
                                 <strong>{item.nombre}</strong>
                                 <div className="cart-controls">
@@ -211,6 +237,7 @@ export default function Navbar() {
                                       type="number"
                                       min="1"
                                       value={item.cantidad || 1}
+<<<<<<< HEAD
                                       onChange={(e) =>
                                         cambiarCantidad(
                                           item.id,
@@ -225,18 +252,29 @@ export default function Navbar() {
                                   >
                                     Quitar
                                   </button>
+=======
+                                      onChange={(e) => cambiarCantidad(item.id, Number(e.target.value || 1))}
+                                    />
+                                  </label>
+                                  <button className="link-remove" onClick={() => quitarDelCarrito(item.id)}>Quitar</button>
+>>>>>>> origin/main
                                 </div>
                               </div>
                             </li>
                           ))}
                         </ul>
                         <div className="cart-actions">
+<<<<<<< HEAD
                           <Link to="/carrito" className="btn">
                             Ver carrito
                           </Link>
                           <Link to="/checkout" className="btn alt">
                             Pagar
                           </Link>
+=======
+                          <Link to="/carrito" className="btn">Ver carrito</Link>
+                          <Link to="/checkout" className="btn alt">Pagar</Link>
+>>>>>>> origin/main
                         </div>
                       </>
                     )}
@@ -252,18 +290,26 @@ export default function Navbar() {
                 <div className="dropdown dropdown-fun">
                   <div className="fun-grid">
                     <Link to="/pomodoro" className="fun-card">
+<<<<<<< HEAD
                       <div
                         className="fun-img"
                         style={{ backgroundImage: "url('/images/Pomodoro.png')" }}
                       >
+=======
+                      <div className="fun-img" style={{ backgroundImage: "url('/images/Pomodoro.png')" }}>
+>>>>>>> origin/main
                         <div className="fun-caption">Pomodoro</div>
                       </div>
                     </Link>
                     <Link to="/shimejis" className="fun-card">
+<<<<<<< HEAD
                       <div
                         className="fun-img"
                         style={{ backgroundImage: "url('/images/no-image.png')" }}
                       >
+=======
+                      <div className="fun-img" style={{ backgroundImage: "url('//Aqui debe ir la direccion de tu imagen')" }}>
+>>>>>>> origin/main
                         <div className="fun-caption">Shimejis</div>
                       </div>
                     </Link>
@@ -274,6 +320,7 @@ export default function Navbar() {
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* RIGHT */}
         <div className="nav-right">
           {usuarioLogueado ? (
@@ -284,6 +331,14 @@ export default function Navbar() {
             <Link to="/login" className="btn">
               Iniciar sesión
             </Link>
+=======
+        {/* RIGHT: Login */}
+        <div className="nav-right">
+          {usuarioLogueado ? (
+            <button onClick={logout} className="btn">Salir</button>
+          ) : (
+            <Link to="/login" className="btn">Iniciar sesión</Link>
+>>>>>>> origin/main
           )}
         </div>
       </div>

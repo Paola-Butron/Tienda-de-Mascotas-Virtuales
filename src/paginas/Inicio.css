@@ -5,15 +5,23 @@
   font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
+<<<<<<< HEAD
 /* ---- SECCIÓN PRINCIPAL ---- */
+=======
+>>>>>>> origin/main
 .inicio-principal {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   border-radius: 12px;
+<<<<<<< HEAD
   background: #fff3ec !important;
   box-shadow: none !important;
+=======
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+>>>>>>> origin/main
   margin-bottom: 20px;
 }
 
@@ -24,17 +32,26 @@
 
 .inicio-principal .inicio-texto h1 {
   margin: 0 0 10px 0;
+<<<<<<< HEAD
   font-size: 4rem;
   margin-right: 30%;
+=======
+  font-size: 2rem;
+>>>>>>> origin/main
 }
 
 .inicio-principal .inicio-texto p {
   margin: 0 0 12px 0;
+<<<<<<< HEAD
   font-size: 1.5rem;
+=======
+  font-size: 1rem;
+>>>>>>> origin/main
   color: #555;
 }
 
 .inicio-principal .inicio-imagen {
+<<<<<<< HEAD
   width: 400px;
   margin-right: 9%;
 }
@@ -61,10 +78,122 @@
   border-radius: 16px;
   display: flex;
   align-items: center;
+=======
+  width: 300px; /* Ajusta el tamaño de la imagen principal */
+  border-radius: 12px;
+}
+
+.categorias-destacadas {
+  display: flex;
+  gap: 16px;
+  width: 100%; /* ocupa todo el ancho de la página */
+  margin-top: 12px;
+}
+
+.categoria-card {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-decoration: none;
+  color: #111;
+  flex: 1; /* cada card ocupa igual proporción */
+}
+
+.categoria-card img.categoria-imagen {
+  width: 80px; /* tamaño aumentado */
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 16px;
+}
+
+.categoria-card span {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.categorias-nuevas {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.lista-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  padding: 0;
+  margin: 12px 0;
+  list-style: none;
+}
+
+.mini-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
+}
+
+.mini-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.mini-card:hover {
+  transform: translateY(-4px);
+}
+
+.producto-info {
+  text-align: center;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.card.publicidad {
+  margin-top: 20px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.inicio-principal button {
+  background-color: #FF8A00; /* naranja */
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+/* Contenedor del carrusel de ofertas */
+.oferta-carrusel {
+  margin-top: 30px;
+  background: #fff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center; /* centra verticalmente los hijos */
+>>>>>>> origin/main
   padding: 20px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+<<<<<<< HEAD
   min-height: 170px;
   cursor: pointer;
 }
@@ -72,25 +201,47 @@
 .oferta-texto {
   max-width: 50%;
   padding-right: 20px;
+=======
+  min-height: 170px; /* evita encogimiento */
+}
+
+/* Texto de la oferta */
+.oferta-texto {
+  max-width: 50%;
+  padding-right: 20px; /* separación de la línea */
+>>>>>>> origin/main
   z-index: 1;
 }
 
 .oferta-texto h3 {
   margin: 0 0 10px 0;
+<<<<<<< HEAD
   font-size: 1.9rem;
   color: #492814;
+=======
+  font-size: 1.2rem;
+>>>>>>> origin/main
 }
 
 .oferta-texto p {
   margin: 0;
+<<<<<<< HEAD
   font-size: 1.3rem;
   color: #492814;
 }
 
+=======
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Separador vertical fijo */
+>>>>>>> origin/main
 .oferta-separador {
   position: absolute;
   top: 20px;
   bottom: 20px;
+<<<<<<< HEAD
   left: calc(50% + 200px);
   width: 2px;
   background: #000000;
@@ -104,10 +255,30 @@
   transform: translateY(-50%);
   width: 190px;
   height: 190px;
+=======
+  left: calc(50% + 80px);
+  width: 2px;
+  background: #ddd;
+  z-index: 0;
+}
+
+/* Imagen siempre a la derecha y centrada verticalmente */
+.oferta-imagen {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 150px;
+  height: 150px;
+>>>>>>> origin/main
   object-fit: contain;
   z-index: 1;
 }
 
+<<<<<<< HEAD
+=======
+/* Bolitas de navegación del carrusel */
+>>>>>>> origin/main
 .carrusel-bolitas {
   position: absolute;
   bottom: 12px;
@@ -120,7 +291,11 @@
 .carrusel-bolitas span {
   width: 10px;
   height: 10px;
+<<<<<<< HEAD
   background: rgba(255, 255, 255, 0.712);
+=======
+  background: rgba(255,255,255,0.5);
+>>>>>>> origin/main
   border-radius: 50%;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -129,6 +304,7 @@
 .carrusel-bolitas span.active {
   background: #f38744;
 }
+<<<<<<< HEAD
 
 /* ---- CATEGORÍAS ---- */
 .categorias-grid {
@@ -235,3 +411,5 @@ h2 {
   color: #f38744;
   font-weight: 800;
 }
+=======
+>>>>>>> origin/main

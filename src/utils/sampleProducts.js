@@ -276,6 +276,551 @@ const sample = [
     "categoria": "Techy",
     "activo": true,
     "ventasMes": 95
+<<<<<<< HEAD
+=======
+  },
+  {
+    "id": 19,
+    "nombre": "Tender",
+    "descripcion": {
+      "personalidad": "Cariñosa y juguetona",
+      "funcion": "Brinda compañía y alegría",
+      "poderEspecial": "Puede enviar 'abrazos virtuales' que mejoran tu ánimo",
+      "beneficio": "Siente ternura y diversión"
+    },
+    "imagenUrl": "/images/CU01.png",
+    "precio": 26.90,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 120
+  },
+  {
+    "id": 20,
+    "nombre": "Snuggles",
+    "descripcion": {
+      "personalidad": "Dulce y tranquila",
+      "funcion": "Acompaña en momentos de descanso",
+      "poderEspecial": "Puede arrullar y relajar al usuario",
+      "beneficio": "Genera calma y confort"
+    },
+    "imagenUrl": "/images/CU02.png",
+    "precio": 25.80,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 100
+  },
+  {
+    "id": 21,
+    "nombre": "Fluffy",
+    "descripcion": {
+      "personalidad": "Alegre y saltarina",
+      "funcion": "Juega y divierte con movimientos graciosos",
+      "poderEspecial": "Puede lanzar burbujas de alegría",
+      "beneficio": "Provoca risas y diversión"
+    },
+    "imagenUrl": "/images/CU03.png",
+    "precio": 27.40,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 108
+  },
+  {
+    "id": 22,
+    "nombre": "Puff",
+    "descripcion": {
+      "personalidad": "Tierno y suave",
+      "funcion": "Enseña cuidado y afecto",
+      "poderEspecial": "Puede dar 'mimos virtuales' que aumentan la felicidad",
+      "beneficio": "Promueve cariño y empatía"
+    },
+    "imagenUrl": "/images/CU04.png",
+    "precio": 26.50,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 99
+  },
+  {
+    "id": 23,
+    "nombre": "Bunny",
+    "descripcion": {
+      "personalidad": "Inquieto y curioso",
+      "funcion": "Explora y descubre junto al usuario",
+      "poderEspecial": "Puede encontrar objetos escondidos",
+      "beneficio": "Fomenta la curiosidad mientras divierte"
+    },
+    "imagenUrl": "/images/CU05.png",
+    "precio": 28.00,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 115
+  },
+  {
+    "id": 24,
+    "nombre": "Peppy",
+    "descripcion": {
+      "personalidad": "Optimista y risueño",
+      "funcion": "Motiva al usuario a interactuar",
+      "poderEspecial": "Puede contagiar energía positiva",
+      "beneficio": "Aumenta el buen ánimo y la motivación"
+    },
+    "imagenUrl": "/images/CU06.png",
+    "precio": 29.10,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 103
+  },
+  {
+    "id": 25,
+    "nombre": "Sniffy",
+    "descripcion": {
+      "personalidad": "Travieso y curioso",
+      "funcion": "Busca y encuentra tesoros pequeños",
+      "poderEspecial": "Puede olfatear secretos virtuales",
+      "beneficio": "Incentiva la exploración y el juego"
+    },
+    "imagenUrl": "/images/CU07.png",
+    "precio": 25.60,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 96
+  },
+  {
+    "id": 26,
+    "nombre": "Muffin",
+    "descripcion": {
+      "personalidad": "Cariñoso y obediente",
+      "funcion": "Acompaña en mini-juegos interactivos",
+      "poderEspecial": "Puede dar premios virtuales",
+      "beneficio": "Refuerza la recompensa y la diversión"
+    },
+    "imagenUrl": "/images/CU08.png",
+    "precio": 27.90,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 105
+  },
+  {
+    "id": 27,
+    "nombre": "Bubbles",
+    "descripcion": {
+      "personalidad": "Espontáneo y juguetón",
+      "funcion": "Crea burbujas y efectos divertidos",
+      "poderEspecial": "Puede hacer reír con trucos graciosos",
+      "beneficio": "Desarrolla alegría y entretenimiento"
+    },
+    "imagenUrl": "/images/CU09.png",
+    "precio": 28.30,
+    "categoria": "Cuddly",
+    "activo": true,
+    "ventasMes": 112
+  },
+
+  {
+    "id": 28,
+    "nombre": "Trail",
+    "descripcion": {
+      "personalidad": "Aventurera y valiente",
+      "funcion": "Explora nuevos mundos y entornos virtuales",
+      "poderEspecial": "Puede descubrir rutas secretas y tesoros escondidos",
+      "beneficio": "Fomenta la curiosidad y el espíritu aventurero"
+    },
+    "imagenUrl": "/images/QS01.png",
+    "precio": 30.40,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 118
+  },
+  {
+    "id": 29,
+    "nombre": "Maply",
+    "descripcion": {
+      "personalidad": "Organizada y exploradora",
+      "funcion": "Guía con mapas y pistas interactivas",
+      "poderEspecial": "Puede mostrar caminos ocultos y misiones secretas",
+      "beneficio": "Desarrolla la orientación y la resolución de problemas"
+    },
+    "imagenUrl": "/images/QS02.png",
+    "precio": 29.70,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 102
+  },
+  {
+    "id": 30,
+    "nombre": "Scouta",
+    "descripcion": {
+      "personalidad": "Curiosa y observadora",
+      "funcion": "Busca elementos en escenarios misteriosos",
+      "poderEspecial": "Puede rastrear objetos o personajes ocultos",
+      "beneficio": "Estimula la observación y la atención al detalle"
+    },
+    "imagenUrl": "/images/QS03.png",
+    "precio": 31.20,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 110
+  },
+  {
+    "id": 31,
+    "nombre": "Rover",
+    "descripcion": {
+      "personalidad": "Intrépido y curioso",
+      "funcion": "Explora terrenos difíciles y zonas inexploradas",
+      "poderEspecial": "Puede detectar señales o anomalías ocultas",
+      "beneficio": "Fomenta el descubrimiento y la perseverancia"
+    },
+    "imagenUrl": "/images/QS04.png",
+    "precio": 30.90,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 99
+  },
+  {
+    "id": 32,
+    "nombre": "Luna",
+    "descripcion": {
+      "personalidad": "Soñadora y aventurera",
+      "funcion": "Guía por misiones espaciales o mágicas",
+      "poderEspecial": "Puede activar portales a mundos secretos",
+      "beneficio": "Despierta la imaginación y la exploración creativa"
+    },
+    "imagenUrl": "/images/QS05.png",
+    "precio": 32.00,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 120
+  },
+  {
+    "id": 33,
+    "nombre": "Compass",
+    "descripcion": {
+      "personalidad": "Segura y sabia",
+      "funcion": "Orienta y da pistas sobre el rumbo correcto",
+      "poderEspecial": "Puede detectar el mejor camino en los desafíos",
+      "beneficio": "Fortalece el pensamiento estratégico y la dirección"
+    },
+    "imagenUrl": "/images/QS06.png",
+    "precio": 29.50,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 97
+  },
+  {
+    "id": 34,
+    "nombre": "Terra",
+    "descripcion": {
+      "personalidad": "Natural y observadora",
+      "funcion": "Explora entornos naturales y ecosistemas",
+      "poderEspecial": "Puede identificar plantas y animales virtuales",
+      "beneficio": "Promueve el amor por la naturaleza y el conocimiento ecológico"
+    },
+    "imagenUrl": "/images/QS07.png",
+    "precio": 30.70,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 106
+  },
+  {
+    "id": 35,
+    "nombre": "Questin",
+    "descripcion": {
+      "personalidad": "Entusiasta y audaz",
+      "funcion": "Acompaña en misiones con retos y acertijos",
+      "poderEspecial": "Puede desbloquear niveles secretos y logros especiales",
+      "beneficio": "Fomenta la superación personal y la exploración activa"
+    },
+    "imagenUrl": "/images/QS08.png",
+    "precio": 31.50,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 113
+  },
+  {
+    "id": 36,
+    "nombre": "Navi",
+    "descripcion": {
+      "personalidad": "Guía y amigable",
+      "funcion": "Ayuda al usuario a no perderse en los mundos virtuales",
+      "poderEspecial": "Puede mostrar rutas seguras y atajos secretos",
+      "beneficio": "Refuerza la orientación y la toma de decisiones"
+    },
+    "imagenUrl": "/images/QS09.png",
+    "precio": 30.20,
+    "categoria": "Questy",
+    "activo": true,
+    "ventasMes": 108
+  },
+
+  {
+    "id": 37,
+    "nombre": "Canva",
+    "descripcion": {
+      "personalidad": "Creativa y soñadora",
+      "funcion": "Crea obras de arte junto al usuario",
+      "poderEspecial": "Puede transformar ideas en dibujos y animaciones virtuales",
+      "beneficio": "Desarrolla imaginación y creatividad"
+    },
+    "imagenUrl": "/images/AR01.png",
+    "precio": 31.50,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 118
+  },
+  {
+    "id": 38,
+    "nombre": "Sketch",
+    "descripcion": {
+      "personalidad": "Curiosa y detallista",
+      "funcion": "Enseña técnicas de dibujo",
+      "poderEspecial": "Puede generar bocetos mágicos",
+      "beneficio": "Mejora habilidades artísticas"
+    },
+    "imagenUrl": "/images/AR02.png",
+    "precio": 29.90,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 110
+  },
+  {
+    "id": 39,
+    "nombre": "Coloro",
+    "descripcion": {
+      "personalidad": "Alegre y expresivo",
+      "funcion": "Juega con colores y patrones",
+      "poderEspecial": "Puede cambiar paletas de colores a voluntad",
+      "beneficio": "Fomenta expresión y creatividad"
+    },
+    "imagenUrl": "/images/AR03.png",
+    "precio": 30.80,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 115
+  },
+  {
+    "id": 40,
+    "nombre": "Brushy",
+    "descripcion": {
+      "personalidad": "Paciente y delicada",
+      "funcion": "Enseña pintura y mezcla de colores",
+      "poderEspecial": "Puede pintar escenas completas en segundos",
+      "beneficio": "Desarrolla habilidades manuales y visuales"
+    },
+    "imagenUrl": "/images/AR04.png",
+    "precio": 33.40,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 104
+  },
+  {
+    "id": 41,
+    "nombre": "Melody",
+    "descripcion": {
+      "personalidad": "Musical y armoniosa",
+      "funcion": "Crea sonidos y música",
+      "poderEspecial": "Puede componer melodías virtuales",
+      "beneficio": "Incentiva sentido musical y ritmo"
+    },
+    "imagenUrl": "/images/AR05.png",
+    "precio": 32.10,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 99
+  },
+  {
+    "id": 42,
+    "nombre": "Dancey",
+    "descripcion": {
+      "personalidad": "Energética y rítmica",
+      "funcion": "Baila y enseña movimientos",
+      "poderEspecial": "Puede crear coreografías virtuales",
+      "beneficio": "Desarrolla coordinación y expresión corporal"
+    },
+    "imagenUrl": "/images/AR06.png",
+    "precio": 30.70,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 108
+  },
+  {
+    "id": 43,
+    "nombre": "Crafty",
+    "descripcion": {
+      "personalidad": "Ingeniosa y hábil",
+      "funcion": "Diseña manualidades y esculturas",
+      "poderEspecial": "Puede crear objetos únicos",
+      "beneficio": "Fomenta creatividad práctica"
+    },
+    "imagenUrl": "/images/AR07.png",
+    "precio": 29.60,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 102
+  },
+  {
+    "id": 44,
+    "nombre": "Imago",
+    "descripcion": {
+      "personalidad": "Observadora y imaginativa",
+      "funcion": "Combina imágenes y efectos",
+      "poderEspecial": "Puede generar collages mágicos",
+      "beneficio": "Estimula creatividad y experimentación visual"
+    },
+    "imagenUrl": "/images/AR08.png",
+    "precio": 34.00,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 121
+  },
+  {
+    "id": 45,
+    "nombre": "Pattern",
+    "descripcion": {
+      "personalidad": "Meticulosa y ordenada",
+      "funcion": "Diseña patrones y formas",
+      "poderEspecial": "Puede crear mandalas y figuras geométricas",
+      "beneficio": "Mejora concentración y apreciación artística"
+    },
+    "imagenUrl": "/images/AR09.png",
+    "precio": 31.80,
+    "categoria": "Arty",
+    "activo": true,
+    "ventasMes": 109
+  },
+  {
+    "id": 46,
+    "nombre": "Herina",
+    "descripcion": {
+      "personalidad": "Sabia y curiosa",
+      "funcion": "Enseña sobre historia, música y tradiciones",
+      "poderEspecial": "Puede contar historias interactivas y revelar curiosidades culturales",
+      "beneficio": "Aprende sobre el mundo de forma divertida"
+    },
+    "imagenUrl": "/images/HE01.png",
+    "precio": 33.20,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 115
+  },
+  {
+    "id": 47,
+    "nombre": "Historio",
+    "descripcion": {
+      "personalidad": "Aventurero y observador",
+      "funcion": "Narra hechos históricos",
+      "poderEspecial": "Puede viajar virtualmente a épocas antiguas",
+      "beneficio": "Conoce la historia mientras juegas"
+    },
+    "imagenUrl": "/images/HE02.png",
+    "precio": 31.70,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 109
+  },
+  {
+    "id": 48,
+    "nombre": "Museo",
+    "descripcion": {
+      "personalidad": "Reflexiva y paciente",
+      "funcion": "Enseña sobre arte y cultura",
+      "poderEspecial": "Puede mostrar exposiciones virtuales",
+      "beneficio": "Descubre arte y tradiciones"
+    },
+    "imagenUrl": "/images/HE03.png",
+    "precio": 30.90,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 103
+  },
+  {
+    "id": 49,
+    "nombre": "Tradito",
+    "descripcion": {
+      "personalidad": "Alegre y sociable",
+      "funcion": "Explica costumbres y festividades",
+      "poderEspecial": "Puede recrear celebraciones culturales",
+      "beneficio": "Aprende tradiciones de forma divertida"
+    },
+    "imagenUrl": "/images/HE04.png",
+    "precio": 29.80,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 117
+  },
+  {
+    "id": 50,
+    "nombre": "Lingo",
+    "descripcion": {
+      "personalidad": "Curioso y comunicativo",
+      "funcion": "Enseña idiomas y palabras únicas",
+      "poderEspecial": "Puede traducir frases mágicas",
+      "beneficio": "Aprende idiomas y comunicación cultural"
+    },
+    "imagenUrl": "/images/HE05.png",
+    "precio": 32.10,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 100
+  },
+  {
+    "id": 51,
+    "nombre": "Melodio",
+    "descripcion": {
+      "personalidad": "Musical y emotivo",
+      "funcion": "Comparte música de distintas culturas",
+      "poderEspecial": "Puede tocar instrumentos virtuales",
+      "beneficio": "Descubre ritmos y canciones del mundo"
+    },
+    "imagenUrl": "/images/HE06.png",
+    "precio": 34.00,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 122
+  },
+  {
+    "id": 52,
+    "nombre": "Archeo",
+    "descripcion": {
+      "personalidad": "Intrépido y analítico",
+      "funcion": "Explora ruinas y tesoros históricos",
+      "poderEspecial": "Puede revelar secretos del pasado",
+      "beneficio": "Desarrolla curiosidad histórica y arqueológica"
+    },
+    "imagenUrl": "/images/HE07.png",
+    "precio": 30.60,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 112
+  },
+  {
+    "id": 53,
+    "nombre": "Folkie",
+    "descripcion": {
+      "personalidad": "Creativo y expresivo",
+      "funcion": "Enseña danzas y artes populares",
+      "poderEspecial": "Puede mostrar bailes tradicionales",
+      "beneficio": "Aprende sobre cultura popular y expresiva"
+    },
+    "imagenUrl": "/images/HE08.png",
+    "precio": 29.90,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 108
+  },
+  {
+    "id": 54,
+    "nombre": "Story",
+    "descripcion": {
+      "personalidad": "Narrador y empático",
+      "funcion": "Cuenta cuentos y leyendas",
+      "poderEspecial": "Puede recrear historias interactivas",
+      "beneficio": "Disfruta del aprendizaje cultural a través de narrativas"
+    },
+    "imagenUrl": "/images/HE09.png",
+    "precio": 31.50,
+    "categoria": "Herity",
+    "activo": true,
+    "ventasMes": 106
+>>>>>>> origin/main
   }
 
 ];

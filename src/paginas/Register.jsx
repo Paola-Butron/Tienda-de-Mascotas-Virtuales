@@ -1,27 +1,125 @@
 import React, { useState } from 'react'
-import { useUsuarios } from '../context/UsuariosContext'
 import { useNavigate } from 'react-router-dom'
+import "./Register.css";
 
-export default function Register(){
-  const { register } = useUsuarios()
-  const [form, setForm] = useState({ nombre:'', apellido:'', email:'', password:'' })
-  const nav = useNavigate()
+export default function Registro() {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    apellido: '',
+    correo: '',
+    contraseña: '',
+  });
 
-  const submit = (e)=> {
-    e.preventDefault()
-    try { register(form); nav('/') } catch(err) { alert(err.message) }
-  }
+  const [errores, setErrores] = useState({});
+  const navigate = useNavigate();
+
+  // Manejar cambios del formulario
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Validar formulario antes de enviar
+  const validarFormulario = () => {
+    let nuevosErrores = {};
+
+    if (!formData.nombre.trim()) {
+      nuevosErrores.nombre = 'El nombre es obligatorio';
+    }
+
+    if (!formData.apellido.trim()) {
+      nuevosErrores.apellido = 'El apellido es obligatorio';
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.correo)) {
+      nuevosErrores.correo = 'Ingresa un correo válido';
+    }
+
+    if (formData.contraseña.length < 8) {
+      nuevosErrores.contraseña = 'La contraseña debe tener al menos 8 caracteres';
+    }
+
+    setErrores(nuevosErrores);
+    return Object.keys(nuevosErrores).length === 0;
+  };
+
+  // Enviar formulario
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (validarFormulario()) {
+      // Obtener usuarios guardados (si existen)
+      const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+      // Verificar si el correo ya está registrado
+      const existe = usuariosGuardados.some(u => u.correo === formData.correo);
+      if (existe) {
+        alert("Ese correo ya está registrado 😅");
+        return;
+      }
+
+      // Agregar el nuevo usuario
+      usuariosGuardados.push(formData);
+      localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
+
+      // Guardar al usuario actual como "logueado"
+      localStorage.setItem("usuarioActivo", JSON.stringify(formData));
+
+      alert("Cuenta creada con éxito 🎉 ¡Bienvenido!");
+      
+      // Limpiar formulario
+      setFormData({ nombre: '', apellido: '', correo: '', contraseña: '' });
+      setErrores({});
+
+      // Redirigir a la página principal o dashboard
+      navigate("/inicio");
+    }
+  };
 
   return (
-    <section className="pagina-form">
-      <h1>Registro</h1>
-      <form onSubmit={submit} className="formulario card">
-        <input value={form.nombre} onChange={e=>setForm({...form,nombre:e.target.value})} placeholder="Nombre" required />
-        <input value={form.apellido} onChange={e=>setForm({...form,apellido:e.target.value})} placeholder="Apellido" required />
-        <input value={form.email} onChange={e=>setForm({...form,email:e.target.value})} placeholder="Correo" required />
-        <input type="password" value={form.password} onChange={e=>setForm({...form,password:e.target.value})} placeholder="Contraseña" required />
-        <div className="acciones"><button type="submit">Crear cuenta</button></div>
-      </form>
-    </section>
-  )
+    <div className="registro-container">
+      <div className="registro-card">
+        <h1 className="registro-titulo">Registro</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="nombre"
+            placeholder="Nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+          />
+          {errores.nombre && <p className="error">{errores.nombre}</p>}
+
+          <input
+            type="text"
+            name="apellido"
+            placeholder="Apellido"
+            value={formData.apellido}
+            onChange={handleChange}
+          />
+          {errores.apellido && <p className="error">{errores.apellido}</p>}
+
+          <input
+            type="email"
+            name="correo"
+            placeholder="Correo"
+            value={formData.correo}
+            onChange={handleChange}
+          />
+          {errores.correo && <p className="error">{errores.correo}</p>}
+
+          <input
+            type="password"
+            name="contraseña"
+            placeholder="Contraseña"
+            value={formData.contraseña}
+            onChange={handleChange}
+          />
+          {errores.contraseña && <p className="error">{errores.contraseña}</p>}
+
+          <button type="submit">Crear cuenta</button>
+        </form>
+      </div>
+    </div>
+  );
 }

@@ -1,0 +1,59 @@
+.registro-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #fff7f1;
+}
+
+.registro-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  width: 400px;
+  text-align: center;
+}
+
+.registro-titulo {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.9rem;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  font-size: 1rem;
+}
+
+.error {
+  color: #e53935;
+  font-size: 0.85rem;
+  text-align: left;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+}
+
+button {
+  background-color: #f28c28;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #e07a1f;
+}
