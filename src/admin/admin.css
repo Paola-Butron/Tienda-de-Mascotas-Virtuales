@@ -1,0 +1,35 @@
+
+.admin-section { display: grid; gap: 16px; padding: 12px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.toolbar input, .toolbar select, .toolbar button {
+  height: 36px; padding: 0 10px; border: 1px solid #e3e3e3; border-radius: 8px; background: #fff;
+}
+.toolbar button { border: none; background: #111827; color: #fff; cursor: pointer; }
+.toolbar button.secondary { background: #f3f4f6; color: #111827; border: 1px solid #e5e7eb; }
+
+
+.table-wrap { overflow: auto; border: 1px solid #e5e7eb; border-radius: 12px; }
+table.admin { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.admin thead th {
+  position: sticky; top: 0; background: #fafafa; text-align: left; padding: 10px; border-bottom: 1px solid #e5e7eb;
+}
+table.admin tbody td { padding: 10px; border-bottom: 1px solid #f3f4f6; }
+table.admin tbody tr:hover { background: #fcfcfc; }
+
+.badge { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.badge.PENDING { background: #fff7ed; color: #9a3412; }     
+.badge.PAID { background: #ecfdf5; color: #065f46; }        
+.badge.SHIPPED { background: #eff6ff; color: #1e40af; }     
+.badge.DELIVERED { background: #eef2ff; color: #3730a3; }  
+.badge.CANCELLED { background: #fef2f2; color: #991b1b; }   
+
+.pager { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
+.pager button { height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid #e5e7eb; background: #f9fafb; cursor: pointer; }
+.pager button:disabled { opacity: .5; cursor: not-allowed; }
+
+.card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 12px; background: #fff; }
+.card h4 { margin: 0 0 8px; }
+
+.empty { padding: 16px; text-align: center; color: #6b7280; }
+.loading { padding: 8px 0; font-size: 14px; color: #6b7280; }
+.actions a, .actions button { margin-right: 8px; }

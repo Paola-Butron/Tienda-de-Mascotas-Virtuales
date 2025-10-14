@@ -1,0 +1,20 @@
+.admin-users { display: grid; gap: 16px; padding: 12px; }
+.admin-users h2 { margin: 0; }
+.users-toolbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.users-toolbar input, .users-toolbar select, .users-toolbar button {
+  height: 36px; padding: 0 10px; border: 1px solid #e3e3e3; border-radius: 8px; background: #fff;
+}
+.users-toolbar button { border: none; background: #111827; color: #fff; cursor: pointer; }
+.users-toolbar button.secondary { background: #f3f4f6; color: #111827; border: 1px solid #e5e7eb; }
+.users-tablewrap { overflow: auto; border: 1px solid #e5e7eb; border-radius: 12px; }
+table.users { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.users thead th { position: sticky; top: 0; background: #fafafa; text-align: left; padding: 10px; border-bottom: 1px solid #e5e7eb; }
+table.users tbody td { padding: 10px; border-bottom: 1px solid #f3f4f6; }
+table.users tbody tr:hover { background: #fcfcfc; }
+.users-pager { display: flex; gap: 8px; align-items: center; justify-content: flex-end; }
+.users-pager button { height: 32px; padding: 0 10px; border-radius: 8px; border: 1px solid #e5e7eb; background: #f9fafb; cursor: pointer; }
+.users-pager button:disabled { opacity: .5; cursor: not-allowed; }
+.badge-state { display: inline-block; padding: 4px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.badge-state.active { background: #ecfdf5; color: #065f46; }
+.badge-state.inactive { background: #fef2f2; color: #991b1b; }
+    
