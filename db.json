@@ -1,0 +1,23 @@
+{
+  "users": [
+    { "id": "u1", "email": "ana@pets.com", "fullName": "Ana Torres", "isActive": true, "role": "admin", "createdAt": "2025-09-01T10:00:00Z" },
+    { "id": "u2", "email": "luis@pets.com", "fullName": "Luis Pérez", "isActive": true, "role": "customer", "createdAt": "2025-09-10T10:00:00Z" }
+  ],
+  "orders": [
+    {
+      "id": "o1",
+      "userId": "u2",
+      "status": "PENDING",
+      "total": 120.50,
+      "createdAt": "2025-10-01T12:00:00Z",
+      "items": [
+        { "id": "oi1", "productId": "p1", "productName": "Collar ajustable", "sku": "COL-01", "quantity": 2, "unitPrice": 20.00 },
+        { "id": "oi2", "productId": "p2", "productName": "Alimento cachorro 3kg", "sku": "FOOD-03", "quantity": 1, "unitPrice": 80.50 }
+      ]
+    }
+  ],
+  "products": [
+    { "id": "p1", "name": "Collar ajustable", "sku": "COL-01", "price": 20.00, "stock": 100 },
+    { "id": "p2", "name": "Alimento cachorro 3kg", "sku": "FOOD-03", "price": 80.50, "stock": 50 }
+  ]
+}
