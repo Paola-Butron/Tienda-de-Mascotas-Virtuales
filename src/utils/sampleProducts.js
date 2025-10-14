@@ -347,7 +347,7 @@ const sample = [
       "beneficio": "Fomenta la curiosidad mientras divierte"
     },
     "imagenUrl": "/images/CU05.png",
-    "precio": 28.00,
+    "precio": 39.90,
     "categoria": "Cuddly",
     "activo": true,
     "ventasMes": 115
@@ -392,7 +392,7 @@ const sample = [
       "beneficio": "Refuerza la recompensa y la diversión"
     },
     "imagenUrl": "/images/CU08.png",
-    "precio": 27.90,
+    "precio": 109.90,
     "categoria": "Cuddly",
     "activo": true,
     "ventasMes": 105
@@ -483,7 +483,7 @@ const sample = [
       "beneficio": "Despierta la imaginación y la exploración creativa"
     },
     "imagenUrl": "/images/QS05.png",
-    "precio": 32.00,
+    "precio": 124.90,
     "categoria": "Questy",
     "activo": true,
     "ventasMes": 120
@@ -716,15 +716,15 @@ const sample = [
   },
   {
     "id": 48,
-    "nombre": "Museo",
+    "nombre": "Magikuy",
     "descripcion": {
-      "personalidad": "Reflexiva y paciente",
-      "funcion": "Enseña sobre arte y cultura",
-      "poderEspecial": "Puede mostrar exposiciones virtuales",
-      "beneficio": "Descubre arte y tradiciones"
+      "personalidad": "Curioso y alegre, con espíritu festivo peruano",
+      "funcion": "Guía en tradiciones, danzas y leyendas del Perú",
+      "poderEspecial": "Puede invocar música y colores de festivales peruanos",
+      "beneficio": "Aprende y celebra la cultura peruana mientras se divierte"
     },
     "imagenUrl": "/images/HE03.png",
-    "precio": 30.90,
+    "precio": 129.90,
     "categoria": "Herity",
     "activo": true,
     "ventasMes": 103
@@ -799,7 +799,7 @@ const sample = [
       "beneficio": "Aprende sobre cultura popular y expresiva"
     },
     "imagenUrl": "/images/HE08.png",
-    "precio": 29.90,
+    "precio": 109.90,
     "categoria": "Herity",
     "activo": true,
     "ventasMes": 108
