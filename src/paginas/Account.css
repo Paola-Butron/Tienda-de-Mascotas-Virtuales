@@ -1,0 +1,64 @@
+.account-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  font-family: "Poppins", sans-serif;
+}
+
+.account-card {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 360px;
+  width: 100%;
+}
+
+.account-card h1 {
+  color: #ff8a00;
+  margin-bottom: 1rem;
+  font-size: 1.7rem;
+}
+
+.account-card p {
+  margin: 0.4rem 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.account-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.account-actions button {
+  display: block;
+  width: 100%;
+  padding: 0.6rem; 
+  border: none;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  font-size: 0.9rem; 
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.account-actions button:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+.logout-btn {
+  background: #ff3b3b;
+  color: white;
+}
+
+.account-actions button:not(.logout-btn) {
+  background: #ff8a00;
+  color: white;
+}
+

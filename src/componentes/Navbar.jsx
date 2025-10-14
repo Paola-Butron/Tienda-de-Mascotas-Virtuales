@@ -274,13 +274,24 @@ export default function Navbar() {
         {/* RIGHT */}
         <div className="nav-right">
           {usuarioLogueado ? (
-            <button onClick={logout} className="btn">
-              Salir
+            <>
+              <button
+                onClick={() => navigate("/mi-cuenta")}
+                className="btn alt"
+              >
+                Mi cuenta
+              </button>
+              <button onClick={logout} className="btn">
+                Salir
+              </button>
+            </>
+            ) : (
+            <button
+              onClick={() => navigate("/login")}
+              className="btn"
+            >
+              Mi cuenta
             </button>
-          ) : (
-            <Link to="/login" className="btn">
-              Iniciar sesión
-            </Link>
           )}
         </div>
       </div>

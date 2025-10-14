@@ -87,3 +87,13 @@
 .login-links a:hover {
   text-decoration: underline;
 }
+
+.error-message {
+  color: #ff4d4d;
+  background: #ffe5e5;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}

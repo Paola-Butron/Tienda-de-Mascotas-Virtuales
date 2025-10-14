@@ -1,94 +1,70 @@
 import React, { useState } from "react";
-import { useUsuarios } from "../context/UsuariosContext";
 import { useNavigate } from "react-router-dom";
-import "./ForgotPassword.css";
+import "./forgotPassword.css";
 
 export default function ForgotPassword() {
-  const { usuarios, forgotPassword, updatePassword } = useUsuarios();
-  const [step, setStep] = useState(1);
-  const [email, setEmail] = useState("");
-  const [codigo, setCodigo] = useState("");
-  const [inputCodigo, setInputCodigo] = useState("");
-  const [newPass, setNewPass] = useState("");
-  const [message, setMessage] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Paso 1: Buscar correo
-  const handleEmailSubmit = (e) => {
+  const validarCorreo = (correo) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
+    setMensaje("");
+    setError("");
 
-    if (!email) return setMessage("Por favor, ingresa tu correo electrónico");
+    if (!correo) {
+      setError("Por favor, ingresa tu correo electrónico.");
+      return;
+    }
 
-    const existe = forgotPassword(email);
-    if (!existe) return setMessage("No existe una cuenta con ese correo");
+    if (!validarCorreo(correo)) {
+      setError("Por favor, ingresa un correo válido.");
+      return;
+    }
 
-    // Generar código de 6 dígitos
-    const codigoGenerado = Math.floor(100000 + Math.random() * 900000);
-    setCodigo(codigoGenerado.toString());
-    console.log("Código enviado", codigoGenerado);
-    setMessage("Se ha enviado un código a tu correo");
-    setStep(2);
-  };
+    // 🔎 Buscar usuario en localStorage
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuario = usuarios.find((u) => u.correo === correo);
 
-  // Paso 2: Validar código y cambiar contraseña
-  const handleResetSubmit = (e) => {
-    e.preventDefault();
+    if (!usuario) {
+      setError("No existe una cuenta asociada a este correo.");
+      return;
+    }
 
-    if (inputCodigo !== codigo) return setMessage("El código es incorrecto");
-    if (newPass.length < 8)
-      return setMessage("La nueva contraseña debe tener al menos 8 caracteres");
+    // ✉️ Simular envío de enlace o nueva contraseña
+    setMensaje("Se ha enviado un enlace para restablecer tu contraseña al correo ingresado. 📧");
 
-    updatePassword(email, newPass);
-    setMessage("Contraseña actualizada correctamente");
-    setTimeout(() => navigate("/login"), 2500);
+    // 🔁 Simulación: después de unos segundos redirige al login
+    setTimeout(() => {
+      navigate("/login");
+    }, 3500);
   };
 
   return (
     <section className="forgot-container">
       <div className="forgot-card">
-        <h1 className="forgot-title">Recuperar Contraseña</h1>
+        <h1 className="forgot-title">¿Olvidaste tu contraseña?</h1>
+        <p className="forgot-subtitle">No te preocupes, te ayudaremos a recuperarla 🐾</p>
 
-        {step === 1 && (
-          <>
-            <p className="forgot-subtitle">
-              Ingresa tu correo para recibir un código de recuperación
-            </p>
-            <form onSubmit={handleEmailSubmit}>
-              <input
-                type="email"
-                placeholder="Correo electrónico"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <button type="submit">Enviar código</button>
-            </form>
-          </>
-        )}
+        <form onSubmit={handleSubmit} className="forgot-form">
+          {error && <p className="error-message">{error}</p>}
+          {mensaje && <p className="success-message">{mensaje}</p>}
 
-        {step === 2 && (
-          <>
-            <p className="forgot-subtitle">
-              Ingresa el código y tu nueva contraseña
-            </p>
-            <form onSubmit={handleResetSubmit}>
-              <input
-                type="text"
-                placeholder="Código recibido"
-                value={inputCodigo}
-                onChange={(e) => setInputCodigo(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Nueva contraseña"
-                value={newPass}
-                onChange={(e) => setNewPass(e.target.value)}
-              />
-              <button type="submit">Cambiar contraseña</button>
-            </form>
-          </>
-        )}
+          <input
+            type="email"
+            placeholder="Ingresa tu correo electrónico"
+            value={correo}
+            onChange={(e) => setCorreo(e.target.value)}
+            className={error ? "input-error" : ""}
+          />
 
-        {message && <p className="forgot-message">{message}</p>}
+          <button type="submit" className="forgot-btn">
+            Enviar enlace
+          </button>
+        </form>
 
         <div className="forgot-links">
           <a href="/login">Volver al inicio de sesión</a>

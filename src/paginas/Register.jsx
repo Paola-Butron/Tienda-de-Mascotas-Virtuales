@@ -1,125 +1,79 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register.css";
 
-export default function Registro() {
-  const [formData, setFormData] = useState({
-    nombre: '',
-    apellido: '',
-    correo: '',
-    contraseña: '',
+export default function Register() {
+  const [form, setForm] = useState({
+    nombre: "",
+    apellido: "",
+    correo: "",
+    contraseña: "",
   });
 
-  const [errores, setErrores] = useState({});
   const navigate = useNavigate();
 
-  // Manejar cambios del formulario
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Validar formulario antes de enviar
-  const validarFormulario = () => {
-    let nuevosErrores = {};
-
-    if (!formData.nombre.trim()) {
-      nuevosErrores.nombre = 'El nombre es obligatorio';
-    }
-
-    if (!formData.apellido.trim()) {
-      nuevosErrores.apellido = 'El apellido es obligatorio';
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.correo)) {
-      nuevosErrores.correo = 'Ingresa un correo válido';
-    }
-
-    if (formData.contraseña.length < 8) {
-      nuevosErrores.contraseña = 'La contraseña debe tener al menos 8 caracteres';
-    }
-
-    setErrores(nuevosErrores);
-    return Object.keys(nuevosErrores).length === 0;
-  };
-
-  // Enviar formulario
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (validarFormulario()) {
-      // Obtener usuarios guardados (si existen)
-      const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-      // Verificar si el correo ya está registrado
-      const existe = usuariosGuardados.some(u => u.correo === formData.correo);
-      if (existe) {
-        alert("Ese correo ya está registrado 😅");
-        return;
-      }
-
-      // Agregar el nuevo usuario
-      usuariosGuardados.push(formData);
-      localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
-
-      // Guardar al usuario actual como "logueado"
-      localStorage.setItem("usuarioActivo", JSON.stringify(formData));
-
-      alert("Cuenta creada con éxito 🎉 ¡Bienvenido!");
-      
-      // Limpiar formulario
-      setFormData({ nombre: '', apellido: '', correo: '', contraseña: '' });
-      setErrores({});
-
-      // Redirigir a la página principal o dashboard
-      navigate("/inicio");
+    // 🔹 Validación
+    if (!form.nombre || !form.apellido || !form.correo || !form.contraseña) {
+      alert("Por favor, completa todos los campos.");
+      return;
     }
+
+    // 🔹 Obtener usuarios existentes o crear array vacío
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    // 🔹 Verificar si el correo ya está registrado
+    const existe = usuarios.some((u) => u.correo === form.correo);
+    if (existe) {
+      alert("Este correo ya está registrado. Intenta con otro.");
+      return;
+    }
+
+    // 🔹 Agregar nuevo usuario
+    usuarios.push(form);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+    // 🔹 Guardar usuario activo para login automático
+    localStorage.setItem("usuarioActivo", JSON.stringify(form));
+
+    alert("¡Registro exitoso! 🎉");
+    navigate("/mi-cuenta");
   };
 
   return (
-    <div className="registro-container">
-      <div className="registro-card">
-        <h1 className="registro-titulo">Registro</h1>
+    <section className="register-container">
+      <div className="register-card">
+        <h1>Crear cuenta</h1>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="nombre"
             placeholder="Nombre"
-            value={formData.nombre}
-            onChange={handleChange}
+            value={form.nombre}
+            onChange={(e) => setForm({ ...form, nombre: e.target.value })}
           />
-          {errores.nombre && <p className="error">{errores.nombre}</p>}
-
           <input
             type="text"
-            name="apellido"
             placeholder="Apellido"
-            value={formData.apellido}
-            onChange={handleChange}
+            value={form.apellido}
+            onChange={(e) => setForm({ ...form, apellido: e.target.value })}
           />
-          {errores.apellido && <p className="error">{errores.apellido}</p>}
-
           <input
             type="email"
-            name="correo"
-            placeholder="Correo"
-            value={formData.correo}
-            onChange={handleChange}
+            placeholder="Correo electrónico"
+            value={form.correo}
+            onChange={(e) => setForm({ ...form, correo: e.target.value })}
           />
-          {errores.correo && <p className="error">{errores.correo}</p>}
-
           <input
             type="password"
-            name="contraseña"
             placeholder="Contraseña"
-            value={formData.contraseña}
-            onChange={handleChange}
+            value={form.contraseña}
+            onChange={(e) => setForm({ ...form, contraseña: e.target.value })}
           />
-          {errores.contraseña && <p className="error">{errores.contraseña}</p>}
-
-          <button type="submit">Crear cuenta</button>
+          <button type="submit" className="register-btn">Registrarse</button>
         </form>
       </div>
-    </div>
+    </section>
   );
 }
