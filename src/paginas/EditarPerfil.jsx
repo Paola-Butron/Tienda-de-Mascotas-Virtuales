@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUsuarios } from "../context/UsuariosContext";
 import "./EditarPerfil.css";
 
 export default function EditarPerfil() {
+  const { usuarioLogueado, updateUsuario } = useUsuarios();
   const [form, setForm] = useState({ nombre: "", apellido: "", correo: "" });
   const navigate = useNavigate();
 
   useEffect(() => {
-    const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
-    if (!usuarioActivo) {
+    if (!usuarioLogueado) {
       alert("Primero inicia sesión 🐾");
       navigate("/login");
       return;
     }
     setForm({
-      nombre: usuarioActivo.nombre || "",
-      apellido: usuarioActivo.apellido || "",
-      correo: usuarioActivo.correo || "",
+      nombre: usuarioLogueado.nombre || "",
+      apellido: usuarioLogueado.apellido || "",
+      correo: usuarioLogueado.email || "",
     });
-  }, [navigate]);
+  }, [usuarioLogueado, navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,21 +29,17 @@ export default function EditarPerfil() {
       return;
     }
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const index = usuarios.findIndex(
-      (u) => u.correo === JSON.parse(localStorage.getItem("usuarioActivo")).correo
-    );
+    // Actualizamos usuario usando la función del contexto
+    updateUsuario(usuarioLogueado.id, {
+      nombre: form.nombre.trim(),
+      apellido: form.apellido.trim()
+    });
 
-    if (index !== -1) {
-      usuarios[index] = { ...usuarios[index], ...form };
-      localStorage.setItem("usuarios", JSON.stringify(usuarios));
-      localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[index]));
-      alert("Datos actualizados correctamente ✅");
-      navigate("/mi-cuenta");
-    } else {
-      alert("Error: no se encontró el usuario en la base local.");
-    }
+    alert("Datos actualizados correctamente ✅");
+    navigate("/mi-cuenta");
   };
+
+  if (!usuarioLogueado) return null; // evita renderizar antes del redirect
 
   return (
     <section className="editar-container">
@@ -69,7 +66,7 @@ export default function EditarPerfil() {
           />
           <div className="editar-buttons">
             <button type="submit" className="guardar-btn">Guardar cambios</button>
-            <button type="button" className="cancelar-btn" onClick={() => navigate("/mi-cuenta")}>
+            <button type="button" className="cancelar-btn" onClick={() => navigate("/")}>
               Cancelar
             </button>
           </div>

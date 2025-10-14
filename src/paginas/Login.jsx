@@ -1,26 +1,21 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useUsuarios } from "../context/UsuariosContext";
 import "./login.css";
 
 export default function Login() {
-  const [form, setForm] = useState({ correo: "", contraseña: "" });
+  const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const { login } = useUsuarios();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    const usuarioEncontrado = usuarios.find(
-      (u) => u.correo === form.correo && u.contraseña === form.contraseña
-    );
-
-    if (usuarioEncontrado) {
-      localStorage.setItem("usuarioActivo", JSON.stringify(usuarioEncontrado));
-      alert(`¡Bienvenido, ${usuarioEncontrado.nombre}! `);
-      navigate("/mi-cuenta");
-    } else {
-      alert("Correo o contraseña incorrectos.");
+    try {
+      login({ email: form.email.trim(), password: form.password });
+      alert(`¡Bienvenido, ${form.email}!`);
+      navigate("/editar-perfil"); // ruta destino tras login (ajusta si quieres /mi-cuenta)
+    } catch (err) {
+      alert(err.message || "Credenciales inválidas");
     }
   };
 
@@ -31,24 +26,14 @@ export default function Login() {
         <p className="login-subtitle">Bienvenido a PetShop 🐾</p>
 
         <form onSubmit={handleSubmit} className="login-form">
-          <input
-            type="email"
-            placeholder="Correo electrónico"
-            value={form.correo}
-            onChange={(e) => setForm({ ...form, correo: e.target.value })}
-          />
-          <input
-            type="password"
-            placeholder="Contraseña"
-            value={form.contraseña}
-            onChange={(e) => setForm({ ...form, contraseña: e.target.value })}
-          />
+          <input type="email" placeholder="Correo electrónico" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
+          <input type="password" placeholder="Contraseña" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required />
           <button type="submit" className="login-btn">Ingresar</button>
         </form>
 
         <div className="login-links">
-          <a href="/register">Crear cuenta</a>
-          <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+          <Link to="/register">Crear cuenta</Link>
+          <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
         </div>
       </div>
     </section>

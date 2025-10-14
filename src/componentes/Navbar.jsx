@@ -28,7 +28,6 @@ export default function Navbar() {
       })
     : [];
 
-
   const handleCategoriaClick = (cat) => {
     navigate(`/productos?categoria=${encodeURIComponent(cat)}`);
     setMostrarResultados(false);
@@ -166,9 +165,7 @@ export default function Navbar() {
                             <button
                               className="link-like"
                               onClick={() =>
-                                navigate(
-                                  `/still-working`
-                                )
+                                navigate(`/still-working`)
                               }
                             >
                               {a}
@@ -276,7 +273,7 @@ export default function Navbar() {
           {usuarioLogueado ? (
             <>
               <button
-                onClick={() => navigate("/mi-cuenta")}
+                onClick={() => navigate("/editar-perfil")}
                 className="btn alt"
               >
                 Mi cuenta
@@ -285,7 +282,7 @@ export default function Navbar() {
                 Salir
               </button>
             </>
-            ) : (
+          ) : (
             <button
               onClick={() => navigate("/login")}
               className="btn"
