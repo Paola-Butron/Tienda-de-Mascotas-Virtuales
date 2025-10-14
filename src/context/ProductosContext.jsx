@@ -55,14 +55,12 @@ export function ProductosProvider({ children }) {
     }
   });
 
-  // Si no hay categorías registradas, inicializa las predeterminadas
   useEffect(() => {
     if (categorias.length === 0) {
       setCategorias(['Brainy', 'Techy', 'Cuddly', 'Questy', 'Arty', 'Herity']);
     }
   }, []);
 
-  // Guardar todo en localStorage cuando haya cambios
   useEffect(() => {
     const payload = { productos, carrito, guardados, categorias };
     localStorage.setItem(STORAGE, JSON.stringify(payload));

@@ -12,27 +12,35 @@ export default function Productos() {
   const location = useLocation()
   const navigate = useNavigate()
 
-  // 🟢 Efecto: se ejecuta cada vez que cambia la URL completa
+  // 🟢 Detectar cambios en la URL
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search)
     const categoriaDesdeURL = queryParams.get('categoria')
     const viewDesdeURL = queryParams.get('view')
     const ofertasDesdeURL = queryParams.get('ofertas')
 
-    if (categoriaDesdeURL) {
+    if (viewDesdeURL === 'ventas') {
+      setCategoriaSeleccionada('Más vendidos')
+    } else if (viewDesdeURL === 'lujo') {
+      setCategoriaSeleccionada('Más lujosos')
+    } else if (categoriaDesdeURL) {
       setCategoriaSeleccionada(categoriaDesdeURL)
     } else if (viewDesdeURL === 'ofertas' || ofertasDesdeURL === 'true') {
       setCategoriaSeleccionada('Ofertas')
     } else {
       setCategoriaSeleccionada('Todas')
     }
-  }, [location.search]) // ✅ esto detecta cualquier cambio en la query
+  }, [location.search])
 
-  // --- Filtrar productos activos y por categoría / ofertas ---
+  // --- Filtrar productos activos y según categoría / ofertas / ventas / lujo ---
   let productosFiltrados = productos.filter(p => p.activo)
 
   if (categoriaSeleccionada === 'Ofertas') {
     productosFiltrados = productosFiltrados.filter(p => p.tieneDescuento)
+  } else if (categoriaSeleccionada === 'Más vendidos') {
+    productosFiltrados = productosFiltrados.filter(p => (p.ventasMes || 0) > 100)
+  } else if (categoriaSeleccionada === 'Más lujosos') {
+    productosFiltrados = productosFiltrados.filter(p => (p.precio || 0) > 100)
   } else if (categoriaSeleccionada !== 'Todas') {
     productosFiltrados = productosFiltrados.filter(p => p.categoria === categoriaSeleccionada)
   }
@@ -46,12 +54,16 @@ export default function Productos() {
     productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre))
   }
 
-  // 🟡 Cuando el usuario cambia de categoría desde los botones, actualizamos la URL también
+  // --- Manejo de clicks en categorías ---
   const handleCategoriaClick = (cat) => {
     if (cat === 'Ofertas') {
       navigate('/productos?view=ofertas')
     } else if (cat === 'Todas') {
       navigate('/productos')
+    } else if (cat === 'Más vendidos') {
+      navigate('/productos?view=ventas')
+    } else if (cat === 'Más lujosos') {
+      navigate('/productos?view=lujo')
     } else {
       navigate(`/productos?categoria=${cat}`)
     }
@@ -64,13 +76,17 @@ export default function Productos() {
           ? 'Ofertas Semanales'
           : categoriaSeleccionada === 'Todas'
           ? 'Nuestros Productos'
+          : categoriaSeleccionada === 'Más vendidos'
+          ? 'Los más vendidos'
+          : categoriaSeleccionada === 'Más lujosos'
+          ? 'Los más lujosos'
           : `Categoría: ${categoriaSeleccionada}`}
       </h2>
 
       {/* === FILTROS Y ORDEN === */}
       <div className="filtros">
         <div className="categorias">
-          {['Todas', 'Brainy', 'Techy', 'Cuddly', 'Questy', 'Arty', 'Herity'].map((cat) => (
+          {['Todas', 'Brainy', 'Techy', 'Cuddly', 'Questy', 'Arty', 'Herity', 'Más vendidos', 'Más lujosos'].map((cat) => (
             <button
               key={cat}
               className={categoriaSeleccionada === cat ? 'activo' : ''}
