@@ -1,0 +1,80 @@
+.footer {
+  background-color: #fff3ec;
+  color: #492814;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-family: 'Poppins', sans-serif;
+  border-top: 2px solid #492814;
+  margin-left: 1.5%;
+  margin-right: 1.5%;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  width: 100%;
+  padding: 0 40px;
+}
+
+/* IZQUIERDA */
+.footer-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.footer-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* CENTRO */
+.footer-center {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-admin {
+  color: #492814;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-admin:hover {
+  color: #ffb347;
+}
+
+/* DERECHA */
+.footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.footer-right a {
+  color: #492814;
+  font-size: 1.3rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-right a:hover {
+  color: #ffb347;
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  .footer-left, .footer-right {
+    justify-content: center;
+  }
+}

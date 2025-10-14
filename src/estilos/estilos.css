@@ -1,0 +1,38 @@
+
+:root{ --bg:#fff3ec; --card:#ffffff; --primary:#FF8A00; --muted:#6B7280 }
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:var(--bg);color:#111}
+.container {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.navbar{background:var(--card);box-shadow:0 6px 18px rgba(0,0,0,0.06);position:sticky;top:0;z-index:10}
+.nav-inner{display:flex;align-items:center;gap:12;justify-content:space-between;padding:12px}
+.brand a{font-weight:800;color:var(--primary);text-decoration:none}
+.buscador{display:flex;gap:8px;flex:1;max-width:520px;margin:0 12px}
+.buscador input{flex:1;padding:8px;border-radius:8px;border:1px solid #eee}
+.buscador button{padding:8px 12px;border-radius:8px;background:var(--primary);color:#fff;border:none}
+.nav-links a, .nav-links .link-btn{margin-left:12px;text-decoration:none;color:var(--muted);font-weight:600}
+.card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.04);margin-bottom:16px}
+.hero{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.hero img{max-width:320px;border-radius:12px}
+.lista-productos{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.producto-item{display:flex;gap:12;align-items:center;background:linear-gradient(180deg,#fff,#fffefc);padding:12px;border-radius:10px}
+.producto-item img{width:96px;height:96px;border-radius:8px;object-fit:cover;background:#fff}
+.formulario{display:flex;flex-direction:column;gap:10px;max-width:700px}
+.formulario input, .formulario textarea{padding:10px;border-radius:8px;border:1px solid #eee}
+.acciones{display:flex;gap:8px;margin-top:6px}
+.acciones button{background:var(--primary);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
+input[type='number']{width:60px;padding:6px;border-radius:6px;border:1px solid #ddd}
+
+button{
+  background-color: var(--primary);
+  color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #e06500;
+}

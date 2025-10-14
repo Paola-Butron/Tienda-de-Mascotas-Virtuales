@@ -1,0 +1,187 @@
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.productos-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 40px 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.productos-container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* ===== FILTROS Y ORDEN ===== */
+.filtros {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.categorias button {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 10px 18px;
+  margin: 0 6px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  color: #492814;
+}
+
+.categorias button:hover {
+  background: #f38744;
+  color: #492814;
+  border-color: #f38744;
+}
+
+.categorias button.activo {
+  background: #f38744;
+  color: #492814;
+  border-color: #f38744;
+}
+
+.orden label {
+  margin-right: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+.orden select {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-weight: 500;
+  background-color: #fff;
+}
+
+/* ===== LISTA DE PRODUCTOS ===== */
+.lista-productos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  list-style: none;
+  padding: 0;
+}
+
+/* ===== TARJETA DE PRODUCTO ===== */
+.producto-item {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 10px;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.producto-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== NOMBRE ===== */
+.nombre {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 12px;
+  margin-top: 5px;
+}
+
+/* ===== IMAGEN Y PRECIO ===== */
+.producto-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.imagen-contenedor {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen-contenedor img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.precio {
+  flex: 1;
+  color: #eb4544;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: right;
+  margin-right: 10px;
+}
+
+/* ===== BOTÓN COMPRAR ===== */
+.comprar {
+  background: #eb4544;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  align-self: center;
+  width: 80%;
+}
+
+.comprar:hover {
+  background: #d83a3a;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1000px) {
+  .lista-productos {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .lista-productos {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .lista-productos {
+    grid-template-columns: 1fr;
+  }
+}
+
+.precio {
+  color: #f38744;
+  font-weight: 800;
+}
+
+.precio-original {
+  color: #888;
+  text-decoration: line-through;
+  font-weight: normal;
+  margin: 0;
+  text-align: left;
+}
+
+.precio-descuento {
+  color: #f38744;
+  font-weight: 800;
+  margin: 0;
+}
+

@@ -1,0 +1,80 @@
+.shimejis-container {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  color: #492814;
+}
+
+.shimejis-container h1 {
+  margin-bottom: 30px;
+  color: #492814;
+}
+
+.shimejis-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  justify-items: center;
+  margin-top: 30px;
+}
+
+.shimeji-card {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.shimeji-card:hover {
+  transform: scale(1.05);
+}
+
+.shimeji-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #ffe8d4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.shimeji-card.activo .shimeji-circle {
+  background-color: #ffb347;
+  box-shadow: 0 0 15px #ffb347;
+}
+
+.shimeji-circle img {
+  width: 80%;
+  height: auto;
+}
+
+.shimeji-card p {
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.mensaje {
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #ff8847;
+  animation: fadeInOut 2s ease;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.mensaje-placeholder {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
