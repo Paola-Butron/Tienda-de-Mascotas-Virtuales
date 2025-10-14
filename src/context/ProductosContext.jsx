@@ -55,26 +55,17 @@ export function ProductosProvider({ children }) {
     }
   });
 
-<<<<<<< HEAD
-  // Si no hay categorías registradas, inicializa las predeterminadas
-=======
->>>>>>> origin/main
   useEffect(() => {
     if (categorias.length === 0) {
       setCategorias(['Brainy', 'Techy', 'Cuddly', 'Questy', 'Arty', 'Herity']);
     }
   }, []);
 
-<<<<<<< HEAD
-  // Guardar todo en localStorage cuando haya cambios
-=======
->>>>>>> origin/main
   useEffect(() => {
     const payload = { productos, carrito, guardados, categorias };
     localStorage.setItem(STORAGE, JSON.stringify(payload));
   }, [productos, carrito, guardados, categorias]);
 
-<<<<<<< HEAD
   // ✅ Aplica el descuento del 30% a los productos "Brainy"
   const productosConDescuento = productos.map(p => {
     if (p.categoria?.toLowerCase() === "brainy") {
@@ -95,15 +86,11 @@ export function ProductosProvider({ children }) {
   const agregarProducto = (producto) => 
     setProductos(prev => [...prev, { ...producto, id: Date.now(), activo: true }]);
 
-=======
-  const agregarProducto = (producto) => setProductos(prev => [...prev, { ...producto, id: Date.now(), activo: true }]);
->>>>>>> origin/main
   const eliminarProducto = (id) => { 
     setProductos(prev => prev.filter(p => p.id !== id)); 
     setCarrito(prev => prev.filter(i => i.id !== id)); 
     setGuardados(prev => prev.filter(i => i.id !== id)); 
   };
-<<<<<<< HEAD
 
   const actualizarProducto = (prod) => 
     setProductos(prev => prev.map(p => p.id === prod.id ? prod : p));
@@ -112,28 +99,18 @@ export function ProductosProvider({ children }) {
     setProductos(prev => prev.map(p => p.id === id ? { ...p, activo: !p.activo } : p));
 
   // ----- FUNCIONES DEL CARRITO -----
-=======
-  const actualizarProducto = (prod) => setProductos(prev => prev.map(p => p.id === prod.id ? prod : p));
-  const toggleActivo = (id) => setProductos(prev => prev.map(p => p.id === id ? { ...p, activo: !p.activo } : p));
-
->>>>>>> origin/main
   const agregarAlCarrito = (producto, cantidad = 1) => {
     const p = productos.find(x => x.id === producto.id);
     if (!p || p.activo === false) return;
     setCarrito(prev => {
       const found = prev.find(i => i.id === producto.id);
-<<<<<<< HEAD
       if (found) {
         return prev.map(i => i.id === producto.id ? { ...i, cantidad: i.cantidad + cantidad } : i);
       }
-=======
-      if (found) return prev.map(i => i.id === producto.id ? { ...i, cantidad: i.cantidad + cantidad } : i);
->>>>>>> origin/main
       return [...prev, { ...producto, cantidad }];
     });
   };
 
-<<<<<<< HEAD
   const quitarDelCarrito = (id) => 
     setCarrito(prev => prev.filter(i => i.id !== id));
 
@@ -141,11 +118,6 @@ export function ProductosProvider({ children }) {
     setCarrito(prev => prev.map(i => i.id === id ? { ...i, cantidad } : i));
 
   // ----- FUNCIONES DE GUARDADOS -----
-=======
-  const quitarDelCarrito = (id) => setCarrito(prev => prev.filter(i => i.id !== id));
-  const cambiarCantidad = (id, cantidad) => setCarrito(prev => prev.map(i => i.id === id ? { ...i, cantidad } : i));
-
->>>>>>> origin/main
   const guardarParaDespues = (id) => {
     const item = carrito.find(i => i.id === id);
     if (!item) return;
@@ -160,7 +132,6 @@ export function ProductosProvider({ children }) {
     setCarrito(prev => [...carrito, item]);
   };
 
-<<<<<<< HEAD
   const eliminarGuardado = (id) => 
     setGuardados(prev => prev.filter(i => i.id !== id));
 
@@ -172,15 +143,6 @@ export function ProductosProvider({ children }) {
     <ProductosContext.Provider value={{
       productos: productosConDescuento,
       agregarProducto, eliminarProducto, actualizarProducto, toggleActivo,
-=======
-  const eliminarGuardado = (id) => setGuardados(prev => prev.filter(i => i.id !== id));
-
-  const agregarCategoria = (nombre) => setCategorias(prev => [...prev, nombre]);
-
-  return (
-    <ProductosContext.Provider value={{
-      productos, agregarProducto, eliminarProducto, actualizarProducto, toggleActivo,
->>>>>>> origin/main
       carrito, agregarAlCarrito, quitarDelCarrito, cambiarCantidad,
       guardados, guardarParaDespues, regresarAlCarrito, eliminarGuardado,
       categorias, agregarCategoria

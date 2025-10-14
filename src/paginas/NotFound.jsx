@@ -9,11 +9,7 @@ export default function NotFound() {
     <div className="notfound-container">
       <div className="notfound-content">
         <div className="notfound-image">
-<<<<<<< HEAD
           <img src='/images/notfound.png' alt='Error 404'/>
-=======
-          {/* Aquí irá tu ilustración o mascota personalizada */}
->>>>>>> origin/main
         </div>
         <h1>Oh oh...</h1>
         <p>Parece que saliste de nuestro bosque 🌲</p>

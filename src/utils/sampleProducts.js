@@ -276,8 +276,6 @@ const sample = [
     "categoria": "Techy",
     "activo": true,
     "ventasMes": 95
-<<<<<<< HEAD
-=======
   },
   {
     "id": 19,
@@ -820,7 +818,6 @@ const sample = [
     "categoria": "Herity",
     "activo": true,
     "ventasMes": 106
->>>>>>> origin/main
   }
 
 ];

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-=======
-import { useState } from 'react'
->>>>>>> origin/main
 import { useProductos } from '../context/ProductosContext'
 import ProductoItem from '../componentes/ProductoItem'
 import './Productos.css';
@@ -13,7 +9,6 @@ export default function Productos() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todas')
   const [orden, setOrden] = useState('ninguno')
 
-<<<<<<< HEAD
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -47,23 +42,10 @@ export default function Productos() {
     productosFiltrados.sort((a, b) => (a.precioDescuento || a.precio) - (b.precioDescuento || b.precio))
   } else if (orden === 'precioDesc') {
     productosFiltrados.sort((a, b) => (b.precioDescuento || b.precio) - (a.precioDescuento || a.precio))
-=======
-  // --- Filtrar productos activos y por categoría ---
-  let productosFiltrados = productos.filter(
-    (p) => p.activo && (categoriaSeleccionada === 'Todas' || p.categoria === categoriaSeleccionada)
-  )
-
-  // --- Ordenar productos ---
-  if (orden === 'precioAsc') {
-    productosFiltrados.sort((a, b) => a.precio - b.precio)
-  } else if (orden === 'precioDesc') {
-    productosFiltrados.sort((a, b) => b.precio - a.precio)
->>>>>>> origin/main
   } else if (orden === 'alfabetico') {
     productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre))
   }
 
-<<<<<<< HEAD
   // 🟡 Cuando el usuario cambia de categoría desde los botones, actualizamos la URL también
   const handleCategoriaClick = (cat) => {
     if (cat === 'Ofertas') {
@@ -84,11 +66,6 @@ export default function Productos() {
           ? 'Nuestros Productos'
           : `Categoría: ${categoriaSeleccionada}`}
       </h2>
-=======
-  return (
-    <div className="productos-container">
-      <h2>Nuestros Productos</h2>
->>>>>>> origin/main
 
       {/* === FILTROS Y ORDEN === */}
       <div className="filtros">
@@ -97,24 +74,17 @@ export default function Productos() {
             <button
               key={cat}
               className={categoriaSeleccionada === cat ? 'activo' : ''}
-<<<<<<< HEAD
               onClick={() => handleCategoriaClick(cat)}
-=======
-              onClick={() => setCategoriaSeleccionada(cat)}
->>>>>>> origin/main
             >
               {cat}
             </button>
           ))}
-<<<<<<< HEAD
           <button
             className={categoriaSeleccionada === 'Ofertas' ? 'activo' : ''}
             onClick={() => handleCategoriaClick('Ofertas')}
           >
             Ofertas
           </button>
-=======
->>>>>>> origin/main
         </div>
 
         <div className="orden">
