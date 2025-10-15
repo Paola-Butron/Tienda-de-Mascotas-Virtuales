@@ -4,16 +4,18 @@ import { useUsuarios } from "../context/UsuariosContext";
 import "./EditarPerfil.css";
 
 export default function EditarPerfil() {
-  const { usuarioLogueado, updateUsuario } = useUsuarios();
+  const { usuarioLogueado, updateUsuario, logout } = useUsuarios();
   const [form, setForm] = useState({ nombre: "", apellido: "", correo: "" });
   const navigate = useNavigate();
 
+  // 🔹 Validación y carga de datos
   useEffect(() => {
     if (!usuarioLogueado) {
       alert("Primero inicia sesión 🐾");
       navigate("/login");
       return;
     }
+
     setForm({
       nombre: usuarioLogueado.nombre || "",
       apellido: usuarioLogueado.apellido || "",
@@ -21,6 +23,7 @@ export default function EditarPerfil() {
     });
   }, [usuarioLogueado, navigate]);
 
+  // 🔹 Guardar cambios
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -29,17 +32,24 @@ export default function EditarPerfil() {
       return;
     }
 
-    // Actualizamos usuario usando la función del contexto
     updateUsuario(usuarioLogueado.id, {
       nombre: form.nombre.trim(),
-      apellido: form.apellido.trim()
+      apellido: form.apellido.trim(),
     });
 
     alert("Datos actualizados correctamente ✅");
-    navigate("/");
+    navigate("/mi-cuenta");
   };
 
-  if (!usuarioLogueado) return null; // evita renderizar antes del redirect
+  // 🔹 Cerrar sesión (sin recargar manualmente el navbar)
+  const handleLogout = () => {
+    logout(); // limpia contexto y localStorage
+    alert("Has cerrado sesión 🐾");
+    // Espera a que el contexto actualice y luego redirige
+    setTimeout(() => navigate("/"), 100);
+  };
+
+  if (!usuarioLogueado) return null;
 
   return (
     <section className="editar-container">
@@ -58,15 +68,17 @@ export default function EditarPerfil() {
             value={form.apellido}
             onChange={(e) => setForm({ ...form, apellido: e.target.value })}
           />
-          <input
-            type="email"
-            placeholder="Correo"
-            value={form.correo}
-            disabled
-          />
+          <input type="email" placeholder="Correo" value={form.correo} disabled />
+
           <div className="editar-buttons">
-            <button type="submit" className="guardar-btn">Guardar cambios</button>
-            <button type="button" className="cancelar-btn" onClick={() => navigate("/")}>
+            <button type="submit" className="guardar-btn">
+              Guardar cambios
+            </button>
+            <button
+              type="button"
+              className="cancelar-btn"
+              onClick={() => navigate("/mi-cuenta")}
+            >
               Cancelar
             </button>
           </div>

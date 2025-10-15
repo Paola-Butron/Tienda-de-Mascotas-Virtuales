@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUsuarios } from "../context/UsuariosContext";
 import { useProductos } from "../context/ProductosContext";
@@ -13,10 +13,16 @@ export default function Navbar() {
     cambiarCantidad = () => {},
     quitarDelCarrito = () => {},
   } = useProductos();
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const [q, setQ] = useState("");
   const [mostrarResultados, setMostrarResultados] = useState(false);
+  const [usuario, setUsuario] = useState(usuarioLogueado); // 👈 estado local sincronizado
+
+  // 🔁 Reacciona automáticamente si el usuario cambia en el contexto
+  useEffect(() => {
+    setUsuario(usuarioLogueado);
+  }, [usuarioLogueado]);
 
   const totalItems = carrito.reduce((s, i) => s + (i.cantidad || 0), 0);
 
@@ -48,6 +54,12 @@ export default function Navbar() {
     setMostrarResultados(false);
   };
 
+  const handleLogout = () => {
+    logout(); // 👈 limpia contexto y localStorage
+    setUsuario(null); // 👈 actualiza visualmente de inmediato
+    navigate("/");
+  };
+
   return (
     <header className="navbar">
       <div className="nav-inner container">
@@ -63,6 +75,7 @@ export default function Navbar() {
         {/* CENTER */}
         <div className="nav-center-wrapper">
           <div className="nav-center">
+            {/* 🔍 Buscador */}
             <div className="buscador" role="search" aria-label="Buscar productos">
               <input
                 aria-label="Buscar"
@@ -76,7 +89,6 @@ export default function Navbar() {
                 onBlur={() => setTimeout(() => setMostrarResultados(false), 200)}
                 placeholder="Buscar..."
               />
-
               {mostrarResultados && (
                 <div className="dropdown-search">
                   {resultados.length > 0 ? (
@@ -142,6 +154,7 @@ export default function Navbar() {
                         </li>
                       </ul>
                     </div>
+
                     <div className="col">
                       <h4>Categorías</h4>
                       <ul>
@@ -157,6 +170,7 @@ export default function Navbar() {
                         ))}
                       </ul>
                     </div>
+
                     <div className="col">
                       <h4>Accesorios</h4>
                       <ul>
@@ -164,9 +178,7 @@ export default function Navbar() {
                           <li key={a}>
                             <button
                               className="link-like"
-                              onClick={() =>
-                                navigate(`/still-working`)
-                              }
+                              onClick={() => navigate("/still-working")}
                             >
                               {a}
                             </button>
@@ -178,7 +190,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Carrito */}
+              {/* 🛒 Carrito */}
               <div className="menu-item has-dropdown cart-dropdown">
                 <button className="menu-btn">
                   Carrito ({totalItems}) <span className="caret">▾</span>
@@ -238,7 +250,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* Diversión */}
+              {/* 🎮 Diversión */}
               <div className="menu-item has-dropdown fun-dropdown">
                 <button className="menu-btn">
                   Diversión <span className="caret">▾</span>
@@ -253,6 +265,7 @@ export default function Navbar() {
                         <div className="fun-caption">Pomodoro</div>
                       </div>
                     </Link>
+
                     <Link to="/shimejis" className="fun-card">
                       <div
                         className="fun-img"
@@ -270,23 +283,20 @@ export default function Navbar() {
 
         {/* RIGHT */}
         <div className="nav-right">
-          {usuarioLogueado ? (
+          {usuario ? (
             <>
               <button
-                onClick={() => navigate("/editar-perfil")}
+                onClick={() => navigate("/mi-cuenta")}
                 className="btn alt"
               >
                 Mi cuenta
               </button>
-              <button onClick={logout} className="btn">
+              <button onClick={handleLogout} className="btn">
                 Salir
               </button>
             </>
           ) : (
-            <button
-              onClick={() => navigate("/login")}
-              className="btn"
-            >
+            <button onClick={() => navigate("/login")} className="btn">
               Mi cuenta
             </button>
           )}

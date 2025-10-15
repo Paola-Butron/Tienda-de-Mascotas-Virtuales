@@ -11,9 +11,12 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      login({ email: form.email.trim(), password: form.password });
-      alert(`¡Bienvenido, ${form.email}!`);
-      navigate("/editar-perfil"); // ruta destino tras login (ajusta si quieres /mi-cuenta)
+      const usuario = login({
+        email: form.email.trim(),
+        password: form.password,
+      });
+      alert(`¡Bienvenido, ${usuario.nombre || usuario.email}!`);
+      navigate("/mi-cuenta");
     } catch (err) {
       alert(err.message || "Credenciales inválidas");
     }
@@ -26,8 +29,20 @@ export default function Login() {
         <p className="login-subtitle">Bienvenido a PetShop 🐾</p>
 
         <form onSubmit={handleSubmit} className="login-form">
-          <input type="email" placeholder="Correo electrónico" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} required />
-          <input type="password" placeholder="Contraseña" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} required />
+          <input
+            type="email"
+            placeholder="Correo electrónico"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={form.password}
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+            required
+          />
           <button type="submit" className="login-btn">Ingresar</button>
         </form>
 

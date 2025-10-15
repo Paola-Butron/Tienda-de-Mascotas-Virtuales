@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUsuarios } from "../context/UsuariosContext";
 import "./CambiarPassword.css";
 
 export default function CambiarPassword() {
-  const [passwords, setPasswords] = useState({ actual: "", nueva: "", confirmar: "" });
+  const { usuarioLogueado, updateUsuario } = useUsuarios();
+  const [passwords, setPasswords] = useState({
+    actual: "",
+    nueva: "",
+    confirmar: "",
+  });
   const navigate = useNavigate();
-  const [usuarioActivo, setUsuarioActivo] = useState(null);
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("usuarioActivo"));
-    if (!user) {
+    if (!usuarioLogueado) {
       alert("Primero inicia sesión 🐾");
       navigate("/login");
-      return;
     }
-    setUsuarioActivo(user);
-  }, [navigate]);
+  }, [usuarioLogueado, navigate]);
 
   const handleChange = (e) => {
     setPasswords({ ...passwords, [e.target.name]: e.target.value });
@@ -34,26 +36,29 @@ export default function CambiarPassword() {
       return;
     }
 
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const index = usuarios.findIndex((u) => u.correo === usuarioActivo.correo);
+    // Obtenemos todos los usuarios desde localStorage
+    const data = JSON.parse(localStorage.getItem("tienda_mascotas_full_users_v1"));
+    const usuarios = data?.usuarios || [];
+    const usuario = usuarios.find((u) => u.id === usuarioLogueado.id);
 
-    if (index === -1) {
-      alert("Usuario no encontrado.");
+    if (!usuario) {
+      alert("Usuario no encontrado ❌");
       return;
     }
 
-    if (usuarios[index].contraseña !== passwords.actual) {
+    if (usuario.password !== passwords.actual) {
       alert("La contraseña actual es incorrecta ⚠️");
       return;
     }
 
-    usuarios[index].contraseña = passwords.nueva;
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    localStorage.setItem("usuarioActivo", JSON.stringify(usuarios[index]));
+    // ✅ Usar función del contexto para actualizar
+    updateUsuario(usuario.id, { password: passwords.nueva });
 
     alert("Contraseña cambiada correctamente 🔒");
     navigate("/mi-cuenta");
   };
+
+  if (!usuarioLogueado) return <p>Cargando...</p>;
 
   return (
     <section className="password-container">
@@ -81,10 +86,18 @@ export default function CambiarPassword() {
             value={passwords.confirmar}
             onChange={handleChange}
           />
-          <button type="submit">Guardar</button>
-          <button type="button" onClick={() => navigate("/mi-cuenta")}>
-            Cancelar
-          </button>
+          <div className="password-buttons">
+            <button type="submit" className="guardar-btn">
+              Guardar
+            </button>
+            <button
+              type="button"
+              className="cancelar-btn"
+              onClick={() => navigate("/mi-cuenta")}
+            >
+              Cancelar
+            </button>
+          </div>
         </form>
       </div>
     </section>

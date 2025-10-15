@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUsuarios } from "../context/UsuariosContext"; // 👈 usamos el contexto
 import "./forgotPassword.css";
 
 export default function ForgotPassword() {
@@ -7,6 +8,7 @@ export default function ForgotPassword() {
   const [mensaje, setMensaje] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { forgotPassword } = useUsuarios(); // 👈 traemos la función del contexto
 
   const validarCorreo = (correo) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
 
@@ -25,19 +27,20 @@ export default function ForgotPassword() {
       return;
     }
 
-    // 🔎 Buscar usuario en localStorage
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuario = usuarios.find((u) => u.correo === correo);
+    // 🔍 Verificar si el correo existe usando el contexto
+    const existe = forgotPassword(correo);
 
-    if (!usuario) {
+    if (!existe) {
       setError("No existe una cuenta asociada a este correo.");
       return;
     }
 
-    // ✉️ Simular envío de enlace o nueva contraseña
-    setMensaje("Se ha enviado un enlace para restablecer tu contraseña al correo ingresado. 📧");
+    // ✉️ Simular envío de enlace
+    setMensaje(
+      "Se ha enviado un enlace para restablecer tu contraseña al correo ingresado. 📧"
+    );
 
-    // 🔁 Simulación: después de unos segundos redirige al login
+    // 🔁 Redirigir después de unos segundos
     setTimeout(() => {
       navigate("/login");
     }, 3500);
@@ -47,7 +50,9 @@ export default function ForgotPassword() {
     <section className="forgot-container">
       <div className="forgot-card">
         <h1 className="forgot-title">¿Olvidaste tu contraseña?</h1>
-        <p className="forgot-subtitle">No te preocupes, te ayudaremos a recuperarla 🐾</p>
+        <p className="forgot-subtitle">
+          No te preocupes, te ayudaremos a recuperarla 🐾
+        </p>
 
         <form onSubmit={handleSubmit} className="forgot-form">
           {error && <p className="error-message">{error}</p>}
