@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./admin.css";
 
 const pageSize = 10;
@@ -13,6 +13,8 @@ function StatusBadge({ status }) {
 }
 
 export default function OrdersList() {
+  const navigate = useNavigate();
+
   const [items, setItems] = useState([]);
   const [status, setStatus] = useState("");
   const [customer, setCustomer] = useState("");
@@ -26,12 +28,15 @@ export default function OrdersList() {
 
   async function load() {
     setLoading(true);
+
     const params = new URLSearchParams({ _page: page, _limit: pageSize, _sort: "createdAt", _order: "desc" });
     if (status) params.set("status", status);
     if (dateFrom) params.set("createdAt_gte", new Date(dateFrom).toISOString());
     if (dateTo) params.set("createdAt_lte", new Date(dateTo).toISOString());
+
     const res = await fetch(`/api/orders?${params.toString()}`);
     let data = await res.json();
+
     if (hasCustomerFilter) {
       const users = await (await fetch(`/api/users?q=${encodeURIComponent(customer.trim())}`)).json();
       const ok = new Set(users.map(u => u.id));
@@ -41,11 +46,13 @@ export default function OrdersList() {
       const h = res.headers.get("X-Total-Count");
       setTotalCount(h ? parseInt(h, 10) : null);
     }
+
     setItems(data);
     setLoading(false);
   }
 
   useEffect(() => { load(); }, [page]);
+
   function applyFilters() {
     setPage(1);
     setTimeout(load, 0);
@@ -98,18 +105,21 @@ export default function OrdersList() {
                 </tr>
               </thead>
               <tbody>
-                {items.map(o => (
-                  <tr key={o.id}>
-                    <td>{new Date(o.createdAt).toLocaleString()}</td>
-                    <td>{o.userId}</td>
-                    <td><StatusBadge status={o.status} /></td>
-                    <td>{formatSoles(o.total)}</td>
-                    <td>{o.items?.reduce((s, i) => s + (i.quantity || 0), 0) || 0}</td>
-                    <td className="actions">
-                      <Link to={`/admin/orders/${o.id}`}>Ver</Link>
-                    </td>
-                  </tr>
-                ))}
+                {items.map(o => {
+                  const orderUrl = `/admin/orders/${encodeURIComponent(o.id)}`;
+                  return (
+                    <tr key={o.id} onClick={() => navigate(orderUrl)} style={{cursor:"pointer"}}>
+                      <td>{new Date(o.createdAt).toLocaleString()}</td>
+                      <td>{o.userId}</td>
+                      <td><StatusBadge status={o.status} /></td>
+                      <td>{formatSoles(o.total)}</td>
+                      <td>{o.items?.reduce((s, i) => s + (i.quantity || 0), 0) || 0}</td>
+                      <td className="actions">
+                        <Link to={orderUrl} onClick={(e)=>e.stopPropagation()}>Ver</Link>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

@@ -27,7 +27,7 @@ import StillWorking from './paginas/StillWorking'
 import UsersList from './admin/UsersList.jsx'
 import UserDetail from './admin/UserDetail.jsx'   
 import OrdersList from './admin/OrdersList.jsx'
-import OrdersDetail from './admin/OrdersDetail.jsx' 
+import AdminOrderDetail from './admin/AdminOrderDetail.jsx' 
 
 
 
@@ -63,11 +63,12 @@ export default function App(){
           <Route path="/pomodoro" element={<Pomodoro />} />
           <Route path="/shimejis" element={<Shimeji />} />
           <Route path="/still-working" element={<StillWorking />} />
-          <Route path="*" element={<NotFound />} />
           <Route path="/admin/users" element={<UsersList/>}/>
           <Route path="/admin/users/:id" element={<UserDetail/>}/>
           <Route path="/admin/orders" element={<OrdersList/>}/>
-          <Route path="/admin/orders/:id" element={<OrderDetail/>}/>
+          <Route path="/admin/orders/:id" element={<AdminOrderDetail/>}/>
+          <Route path="*" element={<NotFound />} />
+
 
         </Routes>
       </main>

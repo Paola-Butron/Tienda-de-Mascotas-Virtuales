@@ -21,7 +21,7 @@
     {
       "id": "o1",
       "userId": "u2",
-      "status": "PENDING",
+      "status": "CANCELLED",
       "total": 120.5,
       "createdAt": "2025-10-01T12:00:00Z",
       "items": [
