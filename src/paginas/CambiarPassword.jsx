@@ -36,7 +36,6 @@ export default function CambiarPassword() {
       return;
     }
 
-    // Obtenemos todos los usuarios desde localStorage
     const data = JSON.parse(localStorage.getItem("tienda_mascotas_full_users_v1"));
     const usuarios = data?.usuarios || [];
     const usuario = usuarios.find((u) => u.id === usuarioLogueado.id);
@@ -51,7 +50,6 @@ export default function CambiarPassword() {
       return;
     }
 
-    // ✅ Usar función del contexto para actualizar
     updateUsuario(usuario.id, { password: passwords.nueva });
 
     alert("Contraseña cambiada correctamente 🔒");

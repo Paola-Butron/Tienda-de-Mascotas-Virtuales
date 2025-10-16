@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUsuarios } from "../context/UsuariosContext"; // 👈 usamos el contexto
+import { useUsuarios } from "../context/UsuariosContext";
 import "./forgotPassword.css";
 
 export default function ForgotPassword() {
@@ -8,7 +8,7 @@ export default function ForgotPassword() {
   const [mensaje, setMensaje] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const { forgotPassword } = useUsuarios(); // 👈 traemos la función del contexto
+  const { forgotPassword } = useUsuarios(); 
 
   const validarCorreo = (correo) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
 
@@ -27,7 +27,6 @@ export default function ForgotPassword() {
       return;
     }
 
-    // 🔍 Verificar si el correo existe usando el contexto
     const existe = forgotPassword(correo);
 
     if (!existe) {
@@ -35,12 +34,10 @@ export default function ForgotPassword() {
       return;
     }
 
-    // ✉️ Simular envío de enlace
     setMensaje(
       "Se ha enviado un enlace para restablecer tu contraseña al correo ingresado. 📧"
     );
 
-    // 🔁 Redirigir después de unos segundos
     setTimeout(() => {
       navigate("/login");
     }, 3500);

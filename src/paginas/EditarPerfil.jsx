@@ -8,7 +8,6 @@ export default function EditarPerfil() {
   const [form, setForm] = useState({ nombre: "", apellido: "", correo: "" });
   const navigate = useNavigate();
 
-  // 🔹 Validación y carga de datos
   useEffect(() => {
     if (!usuarioLogueado) {
       alert("Primero inicia sesión 🐾");
@@ -23,7 +22,6 @@ export default function EditarPerfil() {
     });
   }, [usuarioLogueado, navigate]);
 
-  // 🔹 Guardar cambios
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -41,11 +39,9 @@ export default function EditarPerfil() {
     navigate("/mi-cuenta");
   };
 
-  // 🔹 Cerrar sesión (sin recargar manualmente el navbar)
   const handleLogout = () => {
-    logout(); // limpia contexto y localStorage
+    logout(); 
     alert("Has cerrado sesión 🐾");
-    // Espera a que el contexto actualice y luego redirige
     setTimeout(() => navigate("/"), 100);
   };
 

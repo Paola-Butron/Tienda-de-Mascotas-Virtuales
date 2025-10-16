@@ -61,17 +61,12 @@ export function UsuariosProvider({ children }) {
     }
   });
 
-  // 🔁 Guardar todos los cambios automáticamente en localStorage
   useEffect(() => {
     const payload = { usuarios, usuarioLogueado, ordenes };
     localStorage.setItem(STORAGE, JSON.stringify(payload));
   }, [usuarios, usuarioLogueado, ordenes]);
 
-  // ====================
-  // FUNCIONES PRINCIPALES
-  // ====================
 
-  // Registro (y login automático)
   const register = ({ nombre = "", apellido = "", email, password }) => {
     if (!email || !password) throw new Error("Faltan datos");
     const exists = usuarios.find(
@@ -103,7 +98,6 @@ export function UsuariosProvider({ children }) {
     return publicUser;
   };
 
-  // ✅ Login (ahora actualiza localStorage también)
   const login = ({ email, password }) => {
     const data = JSON.parse(localStorage.getItem(STORAGE));
     if (!data || !data.usuarios) throw new Error("No hay usuarios registrados");
@@ -121,7 +115,6 @@ export function UsuariosProvider({ children }) {
       role: usuario.role,
     };
 
-    // 🔁 Actualiza contexto y localStorage
     setUsuarioLogueado(publicUser);
     const updatedData = { ...data, usuarioLogueado: publicUser };
     localStorage.setItem(STORAGE, JSON.stringify(updatedData));
@@ -129,7 +122,6 @@ export function UsuariosProvider({ children }) {
     return publicUser;
   };
 
-  // ✅ Logout (borra usuario del contexto y del localStorage)
   const logout = () => {
     setUsuarioLogueado(null);
     const data = JSON.parse(localStorage.getItem(STORAGE));
@@ -173,7 +165,6 @@ export function UsuariosProvider({ children }) {
           if (usuarioLogueado?.id === id) {
             const updatedLogueado = { ...usuarioLogueado, ...datos };
             setUsuarioLogueado(updatedLogueado);
-            // 🔁 guardar cambio también en localStorage
             const data = JSON.parse(localStorage.getItem(STORAGE)) || {};
             data.usuarioLogueado = updatedLogueado;
             localStorage.setItem(STORAGE, JSON.stringify(data));

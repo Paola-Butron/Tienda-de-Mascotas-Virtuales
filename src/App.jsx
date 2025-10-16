@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './componentes/Navbar';
-import ScrollToTop from './componentes/ScrollToTop'
+import ScrollToTop from './componentes/ScrollToTop';
 import Footer from './componentes/Footer';
 import Inicio from './paginas/Inicio';
 import Productos from './paginas/Productos';
@@ -12,11 +12,12 @@ import EditarProducto from './paginas/EditarProducto';
 import Carrito from './paginas/Carrito';
 import Checkout from './paginas/Checkout';
 import OrderComplete from './paginas/OrderComplete';
+import OrderDetail from './paginas/OrderDetail'; // ✅ Nuevo import
 import Login from './paginas/Login';
 import Register from './paginas/Register';
 import Account from './paginas/Account';
 import EditarPerfil from './paginas/EditarPerfil';
-import CambiarPassword from './paginas/CambiarPassword.jsx'; 
+import CambiarPassword from './paginas/CambiarPassword.jsx';
 import ForgotPassword from './paginas/ForgotPassword';
 import AdminDashboard from './paginas/admin/AdminDashboard';
 import AdminProductos from './paginas/admin/AdminProductos';
@@ -46,11 +47,12 @@ export default function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-complete" element={<OrderComplete />} />
+          <Route path="/orden/:id" element={<OrderDetail />} /> {/* ✅ Nueva ruta */}
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/mi-cuenta" element={<Account />} />  
-          <Route path="/editar-perfil" element={<EditarPerfil />} /> 
+          <Route path="/mi-cuenta" element={<Account />} />
+          <Route path="/editar-perfil" element={<EditarPerfil />} />
           <Route path="/cambiar-password" element={<CambiarPassword />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
 
@@ -58,7 +60,6 @@ export default function App() {
           <Route path="/admin/productos" element={<AdminProductos />} />
           <Route path="/admin/usuarios" element={<AdminUsuarios />} />
           <Route path="/admin/categorias" element={<Categorias />} />
-
 
           <Route path="/pomodoro" element={<Pomodoro />} />
           <Route path="/shimejis" element={<Shimeji />} />
@@ -70,3 +71,4 @@ export default function App() {
     </div>
   );
 }
+

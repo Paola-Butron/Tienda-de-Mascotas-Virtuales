@@ -17,9 +17,8 @@ export default function Navbar() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
   const [mostrarResultados, setMostrarResultados] = useState(false);
-  const [usuario, setUsuario] = useState(usuarioLogueado); // 👈 estado local sincronizado
+  const [usuario, setUsuario] = useState(usuarioLogueado); 
 
-  // 🔁 Reacciona automáticamente si el usuario cambia en el contexto
   useEffect(() => {
     setUsuario(usuarioLogueado);
   }, [usuarioLogueado]);
@@ -55,15 +54,14 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    logout(); // 👈 limpia contexto y localStorage
-    setUsuario(null); // 👈 actualiza visualmente de inmediato
+    logout(); 
+    setUsuario(null); 
     navigate("/");
   };
 
   return (
     <header className="navbar">
       <div className="nav-inner container">
-        {/* LEFT: Logo */}
         <div className="nav-left">
           <Link to="/" className="brand-link" aria-label="Inicio">
             <div>
@@ -72,10 +70,8 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* CENTER */}
         <div className="nav-center-wrapper">
           <div className="nav-center">
-            {/* 🔍 Buscador */}
             <div className="buscador" role="search" aria-label="Buscar productos">
               <input
                 aria-label="Buscar"
@@ -117,7 +113,6 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* Menú principal */}
             <nav className="nav-links" aria-label="Navegación principal">
               <div className="menu-item has-dropdown products-dropdown">
                 <button className="menu-btn">
@@ -190,7 +185,6 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* 🛒 Carrito */}
               <div className="menu-item has-dropdown cart-dropdown">
                 <button className="menu-btn">
                   Carrito ({totalItems}) <span className="caret">▾</span>
@@ -250,7 +244,6 @@ export default function Navbar() {
                 </div>
               </div>
 
-              {/* 🎮 Diversión */}
               <div className="menu-item has-dropdown fun-dropdown">
                 <button className="menu-btn">
                   Diversión <span className="caret">▾</span>
@@ -281,7 +274,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* RIGHT */}
         <div className="nav-right">
           {usuario ? (
             <>
@@ -290,9 +282,6 @@ export default function Navbar() {
                 className="btn alt"
               >
                 Mi cuenta
-              </button>
-              <button onClick={handleLogout} className="btn">
-                Salir
               </button>
             </>
           ) : (

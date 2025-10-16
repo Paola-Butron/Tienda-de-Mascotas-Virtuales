@@ -1,64 +1,200 @@
+/* ====== ESTILO GENERAL ====== */
 .account-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 80vh;
+  gap: 2.5rem;
+  min-height: 100vh;
   font-family: "Poppins", sans-serif;
+  background-color: #fff3ec; /* fondo sólido */
+  padding: 1.5rem 1rem 3rem 1rem; /* menos espacio arriba */
 }
 
+/* ====== TARJETA DE PERFIL ====== */
 .account-card {
-  background: #fff;
-  padding: 2rem 2.5rem;
+  background: #ffffff;
   border-radius: 1rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(255, 138, 0, 0.25);
+  padding: 2rem 2.2rem;
   text-align: center;
-  max-width: 360px;
+  max-width: 340px;
   width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.account-card:hover {
+  transform: translateY(-3px);
 }
 
 .account-card h1 {
   color: #ff8a00;
   margin-bottom: 1rem;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
+  font-weight: 700;
 }
 
 .account-card p {
-  margin: 0.4rem 0;
-  color: #333;
+  margin: 0.3rem 0;
+  color: #444;
   font-size: 0.95rem;
 }
 
+/* ====== BOTONES DE PERFIL ====== */
 .account-actions {
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.account-actions button {
-  display: block;
+.account-actions .btn {
   width: 100%;
-  padding: 0.6rem; 
+  padding: 0.45rem 0; /* más pequeño */
   border: none;
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
   font-weight: 600;
-  font-size: 0.9rem; 
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
-.account-actions button:hover {
-  transform: scale(1.02);
-  opacity: 0.9;
-}
-
-.logout-btn {
-  background: #ff3b3b;
-  color: white;
-}
-
-.account-actions button:not(.logout-btn) {
+/* Botones principales */
+.btn.editar,
+.btn.password {
   background: #ff8a00;
   color: white;
 }
 
+.btn.editar:hover,
+.btn.password:hover {
+  background: #e67a00;
+  transform: translateY(-2px);
+}
+
+/* Botón de cierre de sesión */
+.btn.logout {
+  background: #ff4444;
+  color: white;
+}
+
+.btn.logout:hover {
+  background: #e03b3b;
+  transform: translateY(-2px);
+}
+
+/* ====== SECCIÓN DE ÓRDENES ====== */
+.account-orders {
+  width: 95%;
+  max-width: 850px;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.8rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  margin-top: 0; /* sin espacio arriba */
+}
+
+/* ====== TÍTULO "MIS ÓRDENES" ====== */
+.account-orders h2 {
+  text-align: center;
+  color: #ff8a00;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1.3rem 0; /* sin margen arriba */
+  padding-top: 0;
+}
+
+/* ====== TABLA DE ÓRDENES ====== */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 0.8rem;
+  box-shadow: 0 2px 8px rgba(255, 138, 0, 0.1);
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.orders-table th {
+  background: #fff2e0;
+  color: #444;
+  font-weight: 600;
+}
+
+.orders-table tr:nth-child(even) {
+  background-color: #fffaf5;
+}
+
+.orders-table tr:hover {
+  background-color: #ffe8d1;
+  transition: 0.2s ease;
+}
+
+/* ====== BOTÓN "VER DETALLE" ====== */
+.btn.ver-detalle {
+  background-color: #ff8a00;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+}
+
+.btn.ver-detalle:hover {
+  background-color: #e67a00;
+  transform: scale(1.05);
+}
+
+/* ====== PAGINACIÓN ====== */
+.paginacion {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.paginacion button {
+  padding: 0.4rem 0.9rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #ff8a00;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.85rem;
+}
+
+.paginacion button:hover {
+  background: #e67a00;
+  transform: translateY(-2px);
+}
+
+.paginacion button:disabled {
+  background: #f0c9a8;
+  color: #fff;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.paginacion span {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* ====== ESTADO DE CARGA ====== */
+.account-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  font-size: 1.2rem;
+  color: #ff8a00;
+}
