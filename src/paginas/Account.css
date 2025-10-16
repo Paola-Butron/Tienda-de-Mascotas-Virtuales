@@ -1,4 +1,3 @@
-/* ====== ESTILO GENERAL ====== */
 .account-container {
   display: flex;
   flex-direction: column;
@@ -6,11 +5,10 @@
   gap: 2.5rem;
   min-height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-color: #fff3ec; /* fondo sólido */
-  padding: 1.5rem 1rem 3rem 1rem; /* menos espacio arriba */
+  background-color: #fff3ec; 
+  padding: 1.5rem 1rem 3rem 1rem; 
 }
 
-/* ====== TARJETA DE PERFIL ====== */
 .account-card {
   background: #ffffff;
   border-radius: 1rem;
@@ -39,7 +37,6 @@
   font-size: 0.95rem;
 }
 
-/* ====== BOTONES DE PERFIL ====== */
 .account-actions {
   margin-top: 1.3rem;
   display: flex;
@@ -49,7 +46,7 @@
 
 .account-actions .btn {
   width: 100%;
-  padding: 0.45rem 0; /* más pequeño */
+  padding: 0.45rem 0; 
   border: none;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -58,7 +55,6 @@
   transition: all 0.3s ease;
 }
 
-/* Botones principales */
 .btn.editar,
 .btn.password {
   background: #ff8a00;
@@ -71,7 +67,6 @@
   transform: translateY(-2px);
 }
 
-/* Botón de cierre de sesión */
 .btn.logout {
   background: #ff4444;
   color: white;
@@ -82,7 +77,6 @@
   transform: translateY(-2px);
 }
 
-/* ====== SECCIÓN DE ÓRDENES ====== */
 .account-orders {
   width: 95%;
   max-width: 850px;
@@ -90,20 +84,18 @@
   border-radius: 1rem;
   padding: 1.8rem;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-  margin-top: 0; /* sin espacio arriba */
+  margin-top: 0; 
 }
 
-/* ====== TÍTULO "MIS ÓRDENES" ====== */
 .account-orders h2 {
   text-align: center;
   color: #ff8a00;
   font-size: 1.4rem;
   font-weight: 700;
-  margin: 0 0 1.3rem 0; /* sin margen arriba */
+  margin: 0 0 1.3rem 0; 
   padding-top: 0;
 }
 
-/* ====== TABLA DE ÓRDENES ====== */
 .orders-table {
   width: 100%;
   border-collapse: collapse;
@@ -134,7 +126,6 @@
   transition: 0.2s ease;
 }
 
-/* ====== BOTÓN "VER DETALLE" ====== */
 .btn.ver-detalle {
   background-color: #ff8a00;
   color: white;
@@ -151,7 +142,6 @@
   transform: scale(1.05);
 }
 
-/* ====== PAGINACIÓN ====== */
 .paginacion {
   margin-top: 1.2rem;
   display: flex;
@@ -189,7 +179,6 @@
   color: #444;
 }
 
-/* ====== ESTADO DE CARGA ====== */
 .account-loading {
   display: flex;
   justify-content: center;

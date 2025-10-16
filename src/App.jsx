@@ -12,7 +12,7 @@ import EditarProducto from './paginas/EditarProducto';
 import Carrito from './paginas/Carrito';
 import Checkout from './paginas/Checkout';
 import OrderComplete from './paginas/OrderComplete';
-import OrderDetail from './paginas/OrderDetail'; // ✅ Nuevo import
+import OrderDetail from './paginas/OrderDetail'; 
 import Login from './paginas/Login';
 import Register from './paginas/Register';
 import Account from './paginas/Account';
@@ -47,7 +47,7 @@ export default function App() {
           <Route path="/carrito" element={<Carrito />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/order-complete" element={<OrderComplete />} />
-          <Route path="/orden/:id" element={<OrderDetail />} /> {/* ✅ Nueva ruta */}
+          <Route path="/orden/:id" element={<OrderDetail />} /> 
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

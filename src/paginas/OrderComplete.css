@@ -12,12 +12,12 @@
 }
 
 .order-image {
-  width: 35%; /* Menos de la mitad */
+  width: 35%; 
   max-width: 220px;
   height: auto;
   display: block;
   margin: 25px auto;
-  border-radius: 40px; /* Bordes curvos */
+  border-radius: 40px; 
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
   object-fit: cover;
   background-color: #fff;
@@ -32,10 +32,10 @@
 .order-button {
   display: inline-block;
   padding: 12px 20px;
-  background-color: #ffb366; /* Naranja claro */
+  background-color: #ffb366; 
   color: #fff;
   text-decoration: none;
-  border-radius: 25px; /* Bordes redondeados */
+  border-radius: 25px; 
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.25s ease;

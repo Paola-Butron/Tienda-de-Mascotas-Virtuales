@@ -34,7 +34,6 @@ export default function Checkout() {
       return;
     }
 
-    // Crear la orden asociada al usuario logueado 👇
     const order = {
       usuarioId: usuarioLogueado.id,
       items: carrito,
@@ -43,8 +42,8 @@ export default function Checkout() {
       total,
     };
 
-    const newOrder = addOrder(order); // ✅ Usa el contexto para guardarla
-    limpiarCarrito && limpiarCarrito(); // limpia el carrito si tienes esa función
+    const newOrder = addOrder(order); 
+    limpiarCarrito && limpiarCarrito(); 
     alert(`Orden creada con éxito 🐾 (ID: ${newOrder.id})`);
 
     navigate("/order-complete");

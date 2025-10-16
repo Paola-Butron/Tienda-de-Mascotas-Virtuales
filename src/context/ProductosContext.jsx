@@ -137,7 +137,6 @@ export function ProductosProvider({ children }) {
   const agregarCategoria = (nombre) => 
     setCategorias(prev => [...prev, nombre]);
 
-  // ----- RETORNO DEL CONTEXTO -----
   return (
     <ProductosContext.Provider value={{
       productos: productosConDescuento,

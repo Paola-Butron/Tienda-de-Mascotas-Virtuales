@@ -20,12 +20,10 @@ export default function Account() {
     setUsuario(usuarioLogueado);
   }, [usuarioLogueado, navigate]);
 
-  // Filtramos las órdenes del usuario logueado
   const ordenesUsuario = ordenes.filter(
     (o) => o.usuarioId === usuario?.id
   );
 
-  // Paginación
   const totalPaginas = Math.ceil(ordenesUsuario.length / ITEMS_POR_PAGINA);
 
   useEffect(() => {
